@@ -1,14 +1,6 @@
-.page {
-  padding: 16px 16px 96px 16px;
-}
+:root {
+  --primary: #00bead;
+  --background: #F2F9F9;
 
-.section-container {
-  padding: 16px;
-  background: #ffffff;
-  border-radius: 8px;
-  margin-bottom: 24px;
-}
-
-.zaui-list-item {
-  cursor: pointer;
+  --zaui-light-body-background-color: var(--background);
 }

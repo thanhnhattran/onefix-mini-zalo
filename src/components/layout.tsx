@@ -1,26 +1,27 @@
-import { getSystemInfo } from "zmp-sdk";
-import {
-  AnimationRoutes,
-  App,
-  Route,
-  SnackbarProvider,
-  ZMPRouter,
-} from "zmp-ui";
-import { AppProps } from "zmp-ui/app";
+import { Outlet } from "react-router-dom";
+import Header from "./header";
+import Footer from "./footer";
+import { Suspense } from "react";
+import { Toaster } from "react-hot-toast";
+import { ScrollRestoration } from "./scroll-restoration";
 
-import HomePage from "@/pages/index";
-
-const Layout = () => {
+export default function Layout() {
   return (
-    <App theme={getSystemInfo().zaloTheme as AppProps["theme"]}>
-      <SnackbarProvider>
-        <ZMPRouter>
-          <AnimationRoutes>
-            <Route path="/" element={<HomePage />}></Route>
-          </AnimationRoutes>
-        </ZMPRouter>
-      </SnackbarProvider>
-    </App>
+    <div className="w-screen h-screen flex flex-col bg-background text-foreground">
+      <Header />
+      <div className="flex-1 overflow-y-auto">
+        <Suspense>
+          <Outlet />
+        </Suspense>
+      </div>
+      <Footer />
+      <Toaster
+        containerClassName="toast-container"
+        containerStyle={{
+          top: "calc(50% - 24px)",
+        }}
+      />
+      <ScrollRestoration />
+    </div >
   );
-};
-export default Layout;
+}
