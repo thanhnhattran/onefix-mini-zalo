@@ -26,15 +26,24 @@ export default function Header() {
 
   const showBack = location.key !== "default" && handle?.back !== false;
 
-  if (handle?.logo) {
+  if (!handle?.back) {
     return (
-      <header className="flex flex-col gap-3 bg-cover bg-center pb-5 px-4 mt-10">
-        <div className="flex items-center text-primary space-x-1.5">
-          <h1 className="text-[17px] font-bold">Hiag Bình Thạnh</h1>
-          <span>|</span>
-          <span className="text-[15px]">Chào bạn</span>
-        </div>
-      </header>
+      <>
+        <div
+          className="fixed inset-0 h-[230px] z-0"
+          style={{
+            background:
+              "linear-gradient(160deg, #8DE9F2 1.36%, #F2F9F9 61.49%)",
+          }}
+        />
+        <header className="flex flex-col gap-3 bg-cover bg-center pb-5 px-4 mt-10 relative z-10">
+          <div className="flex items-center text-primary space-x-1.5">
+            <h1 className="text-[17px] font-bold">Hiag Bình Thạnh</h1>
+            <span>|</span>
+            <span className="text-[15px]">Chào bạn</span>
+          </div>
+        </header>
+      </>
     );
   }
 

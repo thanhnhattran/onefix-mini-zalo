@@ -6,7 +6,11 @@ interface MenuItemProps {
   className?: string;
 }
 
-export default function MenuItem({ icon, label, className = "" }: MenuItemProps) {
+export default function MenuItem({
+  icon,
+  label,
+  className = "",
+}: MenuItemProps) {
   return (
     <div className={`flex flex-col items-center gap-1 ${className}`}>
       <div className="h-9 w-9 text-center">
@@ -15,4 +19,4 @@ export default function MenuItem({ icon, label, className = "" }: MenuItemProps)
       <div className="text-center">{label}</div>
     </div>
   );
-} 
+}

@@ -26,7 +26,7 @@ const NAV_ITEMS = [
   {
     name: "Tư vấn",
     path: "/cart",
-    icon: CartIcon
+    icon: CartIcon,
   },
   {
     name: "Cá nhân",
@@ -70,17 +70,22 @@ export default function Footer() {
               key={item.path}
               className="flex flex-col items-center space-y-0.5 p-1 pb-2.5 cursor-pointer active:scale-105"
             >
-              {({ isActive }) => (
-                item.name ?
+              {({ isActive }) =>
+                item.name ? (
                   <>
                     <div className="w-6 h-6 flex justify-center items-center">
                       <item.icon active={isActive} />
                     </div>
-                    <div className={`text-2xs ${isActive ? "text-primary" : "text-[lightgray]"}`}>
+                    <div
+                      className={`text-2xs ${isActive ? "text-primary" : "text-[lightgray]"}`}
+                    >
                       {item.name}
                     </div>
-                  </> : <item.icon active={isActive} />
-              )}
+                  </>
+                ) : (
+                  <item.icon active={isActive} />
+                )
+              }
             </TransitionLink>
           );
         })}

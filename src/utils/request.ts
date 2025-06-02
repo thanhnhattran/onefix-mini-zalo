@@ -9,7 +9,7 @@ const mockUrls = import.meta.glob<{ default: string }>("../mock/*.json", {
 
 export async function request<T>(
   path: string,
-  options?: RequestInit
+  options?: RequestInit,
 ): Promise<T> {
   const url = API_URL
     ? `${API_URL}${path}`
@@ -25,13 +25,13 @@ export async function request<T>(
 export async function requestWithFallback<T>(
   path: string,
   fallbackValue: T,
-  options?: RequestInit
+  options?: RequestInit,
 ): Promise<T> {
   try {
     return await request<T>(path, options);
   } catch (error) {
     console.warn(
-      "An error occurred while fetching data. Falling back to default value!"
+      "An error occurred while fetching data. Falling back to default value!",
     );
     console.warn({ path, error, fallbackValue });
     return fallbackValue;

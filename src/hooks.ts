@@ -7,7 +7,7 @@ import { openChat, purchase } from "zmp-sdk";
 
 export function useRealHeight(
   element: MutableRefObject<HTMLDivElement | null>,
-  defaultValue?: number
+  defaultValue?: number,
 ) {
   const [height, setHeight] = useState(defaultValue ?? 0);
   useLayoutEffect(() => {
@@ -33,7 +33,6 @@ export function useRouteHandle() {
     undefined,
     {
       title?: string | Function;
-      logo?: boolean;
       back?: boolean;
       scrollRestoration?: number;
     }

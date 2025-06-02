@@ -9,7 +9,7 @@ export function getDefaultOptions(product: Product): SelectedOptions {
 
 export function isIdentical(
   option1: SelectedOptions,
-  option2: SelectedOptions
+  option2: SelectedOptions,
 ) {
   return option1.size === option2.size && option1.color === option2.color;
 }

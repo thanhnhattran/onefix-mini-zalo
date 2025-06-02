@@ -19,7 +19,7 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: getBasePath() }
+  { basename: getBasePath() },
 );
 
 export default router;
