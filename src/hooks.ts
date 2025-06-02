@@ -35,9 +35,10 @@ export function useRouteHandle() {
       title?: string | Function;
       back?: boolean;
       scrollRestoration?: number;
+      noScroll?: boolean;
     }
   >[];
   const lastMatch = matches[matches.length - 1];
 
-  return [lastMatch.handle, lastMatch, matches] as const;
+  return [lastMatch.handle ?? {}, lastMatch, matches] as const;
 }

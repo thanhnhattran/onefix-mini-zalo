@@ -1,8 +1,8 @@
 import ArrowRightIcon from "@/components/icons/arrow-right";
 import ServiceHighlight from "./service-highlight";
-import xoaCan from "@/static/service-xoa-can.png";
-import triNam from "@/static/service-tri-nam.png";
-import giamCan from "@/static/service-giam-can.png";
+import xoaCan from "@/static/doctor-xoa-can.png";
+import triNam from "@/static/doctor-tri-nam.png";
+import giamCan from "@/static/doctor-giam-can.png";
 import Section from "@/components/section";
 
 export default function FeaturedServices() {

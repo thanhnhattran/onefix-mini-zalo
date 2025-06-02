@@ -1,10 +1,7 @@
 {
   "app": {
     "title": "ZaUI Doctor",
-    "textColor": {
-      "light": "black",
-      "dark": "white"
-    },
+    "textColor": "black",
     "statusBar": "transparent",
     "actionBarHidden": true,
     "hideIOSSafeAreaBottom": true,

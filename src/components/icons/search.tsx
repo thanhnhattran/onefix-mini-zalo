@@ -1,4 +1,6 @@
-function SearchIcon() {
+import { SVGProps } from "react";
+
+function SearchIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="100%"
@@ -8,6 +10,7 @@ function SearchIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       style={{ overflow: "visible" }}
+      {...props}
     >
       <g clipPath="url(#clip0_11_41)">
         <path

@@ -1,4 +1,4 @@
-import MenuGrid from "./menu-grid";
+import ServiceMenu from "./service-menu";
 import QuickActions from "./quick-actions";
 import SearchBar from "./search-bar";
 import FeaturedServices from "./featured-services";
@@ -10,7 +10,7 @@ function HomePage() {
     <>
       <SearchBar />
       <QuickActions />
-      <MenuGrid />
+      <ServiceMenu />
       <FeaturedServices />
       <RemoteDiagnosis />
       <HealthNews />
