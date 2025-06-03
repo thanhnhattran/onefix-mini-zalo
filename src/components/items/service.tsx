@@ -1,5 +1,5 @@
-import TransitionLink from "./transition-link";
 import { To } from "react-router-dom";
+import TransitionLink from "../transition-link";
 
 interface ServiceItemProps {
   icon: string;

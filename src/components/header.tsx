@@ -9,16 +9,18 @@ import { useMemo } from "react";
 import { useRouteHandle } from "@/hooks";
 import { BackIcon } from "./icons/back";
 import headerIllus from "@/static/header-illus.svg";
+import { servicesState } from "@/state";
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [handle, match] = useRouteHandle();
+  const services = useAtomValue(servicesState);
 
   const title = useMemo(() => {
     if (handle) {
       if (typeof handle.title === "function") {
-        return handle.title({ params: match.params });
+        return handle.title({ params: match.params, services: services });
       } else {
         return handle.title;
       }
@@ -28,10 +30,12 @@ export default function Header() {
   const showBack = location.key !== "default" && handle?.back !== false;
 
   return (
-    <header className="flex-none w-full bg-white min-h-12 pr-[90px] px-4 pt-st pb-2 space-x-2 bg-no-repeat bg-right-top"
+    <header
+      className="flex-none w-full bg-white min-h-12 pr-[90px] px-4 pt-st pb-2 space-x-2 bg-no-repeat bg-right-top"
       style={{
         backgroundImage: `url(${headerIllus})`,
-      }}>
+      }}
+    >
       <div className="flex items-center min-h-12">
         {!handle?.back ? (
           <>

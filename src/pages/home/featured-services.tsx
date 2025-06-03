@@ -9,10 +9,11 @@ export default function FeaturedServices() {
   return (
     <Section className="pt-5" title="Dịch vụ nổi bật" viewMore isCard>
       <div className="grid grid-cols-2 gap-2.5">
-        <div className="relative flex h-36 flex-col items-start gap-1 bg-cover bg-center">
+        <div className="relative flex flex-col items-start gap-1 bg-cover bg-center">
           <ServiceHighlight
             title="Giảm cân"
             subtitle="Làm đẹp"
+            to="/service/1"
             cta={
               <button
                 className="mt-2 flex w-fit items-center justify-center rounded-full px-1.5 py-0.5"

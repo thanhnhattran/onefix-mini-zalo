@@ -17,6 +17,6 @@ export default function Layout() {
         }}
       />
       <ScrollRestoration />
-    </div >
+    </div>
   );
 }

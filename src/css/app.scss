@@ -3,6 +3,8 @@
   --background: #F2F9F9;
 
   --zaui-light-body-background-color: var(--background);
+  --zaui-light-input-border-color: rgba(0, 0, 0, 0.10);
+  --zaui-light-input-hover-border-color: var(--primary);
 
   --safe-top: var(--zaui-safe-area-inset-top, env(safe-area-inset-top, 30px));
   --safe-bottom: max(
@@ -10,3 +12,29 @@
     var(--zaui-safe-area-inset-bottom, env(safe-area-inset-bottom, 30px))
   );
 }
+
+.zaui-select {
+  &.zaui-input-affix-wrapper {
+    border-radius: 100px;
+  }
+}
+
+.zaui-input-textarea-affix-wrapper {
+  &.zaui-input-affix-wrapper {
+    border: none;
+  }
+
+  .zaui-input-show-count-suffix {
+    border-radius: 10px;
+    background: #F3F3F3;
+    padding: 2px 6px;
+    font-size: 10px;
+    color: #656565;
+  }
+
+  .zaui-input-textarea ~ .zaui-input-suffix .zaui-input-show-count-suffix {
+    bottom: 0;
+    right: 0;
+  }
+}
+

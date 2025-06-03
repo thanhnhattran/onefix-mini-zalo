@@ -4,6 +4,9 @@ import { createBrowserRouter } from "react-router-dom";
 import { getBasePath } from "@/utils/zma";
 import ServicesPage from "./pages/services";
 import CategoriesPage from "./pages/categories";
+import ExplorePage from "./pages/explore";
+import ServiceDetailPage from "./pages/service-detail";
+import NotFound from "./pages/404";
 
 const router = createBrowserRouter(
   [
@@ -16,6 +19,19 @@ const router = createBrowserRouter(
           element: <HomePage />,
         },
         {
+          path: "/categories",
+          element: <CategoriesPage />,
+          handle: {
+            back: true,
+            title: "Danh mục",
+            noScroll: true,
+          },
+        },
+        {
+          path: "/explore",
+          element: <ExplorePage />,
+        },
+        {
           path: "/services",
           element: <ServicesPage />,
           handle: {
@@ -24,13 +40,17 @@ const router = createBrowserRouter(
           },
         },
         {
-          path: "/categories",
-          element: <CategoriesPage />,
+          path: "/service/:id",
+          element: <ServiceDetailPage />,
           handle: {
             back: true,
-            title: "Danh mục",
-            noScroll: true,
+            title: ({ services, params }) =>
+              services.find((c) => String(c.id) === params.id)?.name,
           },
+        },
+        {
+          path: "*",
+          element: <NotFound />,
         },
       ],
     },
