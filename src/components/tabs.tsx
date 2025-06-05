@@ -1,6 +1,8 @@
+import { createElement, FunctionComponent } from 'react';
+
 interface Tab {
   name: string;
-  content: () => React.ReactNode;
+  content: FunctionComponent;
 }
 
 interface TabsProps {
@@ -20,7 +22,7 @@ function Tabs({ activeTab, onTabChange, tabs }: TabsProps) {
             onClick={() => onTabChange(index)}
           >
             <div
-              className={`truncate ${activeTab === index ? "text-teal-500 font-medium" : "text-neutral-400"}`}
+              className={`truncate ${activeTab === index ? 'text-teal-500 font-medium' : 'text-neutral-400'}`}
             >
               {name}
             </div>
@@ -32,7 +34,7 @@ function Tabs({ activeTab, onTabChange, tabs }: TabsProps) {
           </div>
         ))}
       </div>
-      <div className="flex-1 overflow-y-auto">{tabs[activeTab].content()}</div>
+      <div className="flex-1 overflow-y-auto">{createElement(tabs[activeTab].content)}</div>
     </div>
   );
 }

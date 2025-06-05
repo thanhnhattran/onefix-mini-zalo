@@ -1,61 +1,69 @@
-import Layout from "@/components/layout";
-import HomePage from "@/pages/home";
-import { createBrowserRouter } from "react-router-dom";
-import { getBasePath } from "@/utils/zma";
-import ServicesPage from "./pages/services";
-import CategoriesPage from "./pages/categories";
-import ExplorePage from "./pages/explore";
-import ServiceDetailPage from "./pages/service-detail";
-import NotFound from "./pages/404";
+import Layout from '@/components/layout';
+import HomePage from '@/pages/home';
+import { createBrowserRouter } from 'react-router-dom';
+import { getBasePath } from '@/utils/zma';
+import ServicesPage from './pages/services';
+import CategoriesPage from './pages/categories';
+import ExplorePage from './pages/explore';
+import ServiceDetailPage from './pages/service-detail';
+import NotFound from './pages/404';
+import BookingPage from './pages/booking';
 
 const router = createBrowserRouter(
   [
     {
-      path: "/",
+      path: '/',
       element: <Layout />,
       children: [
         {
-          path: "/",
+          path: '/',
           element: <HomePage />,
         },
         {
-          path: "/categories",
+          path: '/categories',
           element: <CategoriesPage />,
           handle: {
             back: true,
-            title: "Danh mục",
+            title: 'Danh mục',
             noScroll: true,
           },
         },
         {
-          path: "/explore",
+          path: '/explore',
           element: <ExplorePage />,
         },
         {
-          path: "/services",
+          path: '/services',
           element: <ServicesPage />,
           handle: {
             back: true,
-            title: "Tất cả dịch vụ",
+            title: 'Tất cả dịch vụ',
           },
         },
         {
-          path: "/service/:id",
+          path: '/service/:id',
           element: <ServiceDetailPage />,
           handle: {
             back: true,
-            title: ({ services, params }) =>
-              services.find((c) => String(c.id) === params.id)?.name,
+            title: ({ services, params }) => services.find(c => String(c.id) === params.id)?.name,
           },
         },
         {
-          path: "*",
+          path: '/booking/:step?',
+          element: <BookingPage />,
+          handle: {
+            back: true,
+            title: 'Đặt lịch khám',
+          },
+        },
+        {
+          path: '*',
           element: <NotFound />,
         },
       ],
     },
   ],
-  { basename: getBasePath() },
+  { basename: getBasePath() }
 );
 
 export default router;

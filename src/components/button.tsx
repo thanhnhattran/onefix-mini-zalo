@@ -1,3 +1,4 @@
+import { startViewTransition } from '@/utils/miscellaneous';
 import React, { useEffect, useState } from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,12 +20,12 @@ export const Button: React.FC<ButtonProps> = ({
   useEffect(() => {
     if (appearAnimation) {
       // Fallback for browsers that don't support View Transitions
-      if (!document.startViewTransition) {
+      if (!startViewTransition) {
         setIsVisible(true);
         return;
       }
 
-      document.startViewTransition(() => {
+      startViewTransition(() => {
         setIsVisible(true);
       });
     }
