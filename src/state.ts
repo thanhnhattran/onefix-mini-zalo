@@ -1,8 +1,17 @@
 import { atom } from 'jotai';
-import { atomFamily, atomWithReset } from 'jotai/utils';
-import { Doctor, Service, SymptomDescription, TimeSlot } from './types';
-import { mock7DaysTimeSlots, mockDoctors, mockServices, mockSpecialties } from './utils/mock';
+import { atomFamily, atomWithReset, loadable } from 'jotai/utils';
+import { Doctor, Feedback, Inquiry, Service, SymptomDescription, TimeSlot } from './types';
+import {
+  mock7DaysTimeSlots,
+  mockDoctors,
+  mockBookings,
+  mockServices,
+  mockInvoices,
+  mockArticles,
+  mockDepartments,
+} from './utils/mock';
 import { getUserInfo } from 'zmp-sdk';
+import { wait } from './utils/miscellaneous';
 
 export const userState = atom(() =>
   getUserInfo({
@@ -27,6 +36,20 @@ export const symptomFormState = atomFamily((serviceId: string) =>
   })
 );
 
+export const askFormState = atomWithReset<Inquiry>({
+  department: '',
+  symptoms: [],
+  description: '',
+  images: [],
+});
+
+export const feedbackFormState = atomWithReset<Feedback>({
+  title: '',
+  description: '',
+  images: [],
+  category: '',
+});
+
 export const symptomsState = atom(() => [
   'Đau đầu',
   'Choáng váng',
@@ -40,13 +63,22 @@ export const symptomsState = atom(() => [
   'Tiêu chảy',
 ]);
 
+export const feedbackCategoriesState = atom(() => [
+  'Tình trạng hoạt động',
+  'Thái độ nhân viên',
+  'Khác',
+]);
+
 export const availableTimeSlotsState = atom<TimeSlot[]>(mock7DaysTimeSlots);
+
+export const articlesState = atom(mockArticles);
 
 export const doctorsState = atom(mockDoctors);
 
 export const bookingFormState = atomWithReset<{
   slot?: TimeSlot;
   doctor?: Doctor;
+  department?: string;
   symptoms: string[];
   description: string;
   images: string[];
@@ -56,4 +88,43 @@ export const bookingFormState = atomWithReset<{
   images: [] as string[],
 });
 
-export const specialtiesState = atom(mockSpecialties);
+export const departmentsState = atom(mockDepartments);
+
+export const schedulesState = atom(mockBookings);
+
+export const scheduleByIdState = atomFamily((id: number) =>
+  atom(get => {
+    const schedules = get(schedulesState);
+    return schedules.find(s => s.id === id);
+  })
+);
+
+export const invoicesState = atom(mockInvoices);
+
+export const searchResultState = atomFamily((keyword: string) =>
+  loadable(
+    atom(async get => {
+      await wait(1500);
+      const doctors = get(doctorsState);
+      const departments = get(departmentsState);
+      const news = get(articlesState);
+      return {
+        doctors: doctors.filter(
+          d =>
+            d.name.toLowerCase().includes(keyword.toLowerCase()) ||
+            d.specialties.toLowerCase().includes(keyword.toLowerCase())
+        ),
+        departments: departments.filter(
+          d =>
+            d.name.toLowerCase().includes(keyword.toLowerCase()) ||
+            d.subDepartments.some(sd => sd.toLowerCase().includes(keyword.toLowerCase()))
+        ),
+        news: news.filter(
+          n =>
+            n.title.toLowerCase().includes(keyword.toLowerCase()) ||
+            n.category.toLowerCase().includes(keyword.toLowerCase())
+        ),
+      };
+    })
+  )
+);

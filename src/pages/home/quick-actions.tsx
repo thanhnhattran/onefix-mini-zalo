@@ -1,8 +1,8 @@
-import Section from "@/components/section";
-import TransitionLink from "@/components/transition-link";
-import book from "@/static/book.svg";
-import history from "@/static/history.svg";
-import { To } from "react-router-dom";
+import Section from '@/components/section';
+import TransitionLink from '@/components/transition-link';
+import book from '@/static/book.svg';
+import history from '@/static/history.svg';
+import { To } from 'react-router-dom';
 
 interface QuickActionProps {
   to: To;
@@ -25,7 +25,7 @@ const QuickActions = () => {
   return (
     <Section className="pt-4 pb-5 grid grid-cols-2 gap-3">
       <QuickAction to="/booking" icon={book} title="Đặt lịch" subtitle="Khám bệnh" />
-      <QuickAction to="/history" icon={history} title="Lịch sử" subtitle="Hồ sơ" />
+      <QuickAction to="/schedule" icon={history} title="Lịch sử" subtitle="Hồ sơ" />
     </Section>
   );
 };

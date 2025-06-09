@@ -42,18 +42,21 @@ export const Button: React.FC<ButtonProps> = ({
         ${className || ''}
         ${
           isVisible
-            ? `flex w-full h-12 p-3 justify-center items-center text-white text-lg rounded-full transition-all duration-500 ease-out active:scale-95`
+            ? `flex w-full h-12 p-3 justify-center items-center text-white text-lg rounded-full active:scale-95`
             : 'fixed bottom-0 left-1/2 w-full h-12 translate-y-40'
         }
       `}
       disabled={loading || disabled}
       {...props}
     >
-      {loading ? (
-        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-      ) : (
-        children
-      )}
+      <div className="relative w-full h-full flex items-center justify-center">
+        <div className={`${loading ? 'opacity-0' : ''}`}>{children}</div>
+        {loading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          </div>
+        )}
+      </div>
     </button>
   );
 };

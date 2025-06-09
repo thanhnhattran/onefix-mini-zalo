@@ -1,17 +1,17 @@
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import { MutableRefObject, useLayoutEffect, useMemo, useState } from "react";
-import { UIMatch, useMatches } from "react-router-dom";
-import { getDefaultOptions, isIdentical } from "@/utils/cart";
-import { getConfig } from "@/utils/template";
-import { openChat, purchase } from "zmp-sdk";
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
+import { MutableRefObject, useLayoutEffect, useMemo, useState } from 'react';
+import { UIMatch, useMatches } from 'react-router-dom';
+import { getDefaultOptions, isIdentical } from '@/utils/cart';
+import { getConfig } from '@/utils/template';
+import { openChat, purchase } from 'zmp-sdk';
 
 export function useRealHeight(
   element: MutableRefObject<HTMLDivElement | null>,
-  defaultValue?: number,
+  defaultValue?: number
 ) {
   const [height, setHeight] = useState(defaultValue ?? 0);
   useLayoutEffect(() => {
-    if (element.current && typeof ResizeObserver !== "undefined") {
+    if (element.current && typeof ResizeObserver !== 'undefined') {
       const ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
         const [{ contentRect }] = entries;
         setHeight(contentRect.height);
@@ -22,7 +22,7 @@ export function useRealHeight(
     return () => {};
   }, [element.current]);
 
-  if (typeof ResizeObserver === "undefined") {
+  if (typeof ResizeObserver === 'undefined') {
     return -1;
   }
   return height;
@@ -36,6 +36,7 @@ export function useRouteHandle() {
       back?: boolean;
       scrollRestoration?: number;
       noScroll?: boolean;
+      profile?: boolean;
     }
   >[];
   const lastMatch = matches[matches.length - 1];

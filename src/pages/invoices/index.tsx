@@ -1,31 +1,21 @@
+import { Button } from '@/components/button';
 import { DashedDivider } from '@/components/dashed-divider';
 import FabForm from '@/components/form/fab-form';
 import SuccessIcon from '@/components/icons/success';
 import PolarizedList from '@/components/polarized-list';
-import { bookingFormState, userState } from '@/state';
+import { bookingFormState, invoicesState, userState } from '@/state';
 import { useAtomValue } from 'jotai';
 import { useNavigate } from 'react-router-dom';
 
-export default function Step3() {
-  const navigate = useNavigate();
+function InvoicesPage() {
   const { userInfo } = useAtomValue(userState);
-  const booking = useAtomValue(bookingFormState);
+  const invoices = useAtomValue(invoicesState);
 
   return (
-    <FabForm
-      fab={{
-        label: 'Xem lịch hẹn của tôi',
-        onClick: () => {
-          navigate('/history');
-        },
-      }}
-    >
-      <div className="p-4 h-full flex items-center">
-        <div className="flex w-full flex-col items-center gap-4 rounded-2xl bg-white px-4 py-8">
-          <SuccessIcon />
-          <div className="self-stretch text-center text-lg font-medium text-neutral-900">
-            Đặt lịch thành công
-          </div>
+    <div className="py-5 px-4 space-y-4">
+      {invoices.map(invoice => (
+        <div className="w-full space-y-6 rounded-2xl bg-white px-4 py-6">
+          <div className="text-xl font-medium">{invoice.booking.department}</div>
           <DashedDivider />
           <PolarizedList
             items={[
@@ -36,8 +26,11 @@ export default function Step3() {
               ['Loại khám bệnh', 'Khám bệnh\nKhám lần đầu'],
             ]}
           />
+          <Button>Thanh toán</Button>
         </div>
-      </div>
-    </FabForm>
+      ))}
+    </div>
   );
 }
+
+export default InvoicesPage;

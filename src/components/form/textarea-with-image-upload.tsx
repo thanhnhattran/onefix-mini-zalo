@@ -2,12 +2,13 @@ import { ChangeEvent, useState } from 'react';
 import { Input } from 'zmp-ui';
 import { PlusIcon } from '../icons/plus-icon';
 import { chooseImage } from 'zmp-sdk';
+import { TextAreaProps } from 'zmp-ui/input';
 
 interface TextareaWithImageUploadProps {
   textarea: {
     value: string;
     onChange: (value: string) => void;
-  };
+  } & TextAreaProps;
   images: {
     values: string[];
     onChange: (values: string[]) => void;
@@ -35,13 +36,13 @@ function TextareaWithImageUpload({ textarea, images }: TextareaWithImageUploadPr
   return (
     <div className="flex flex-grow flex-col space-y-4 rounded-[10px] border border-black/10 px-3 py-4 text-sm text-[darkgray]">
       <Input.TextArea
-        value={textarea.value}
-        onChange={handleTextareaChange}
         className="p-0"
         autoHeight
         showCount
         maxLength={MAX_CHARS}
-        placeholder="Xin vui lòng mô tả chi tiết triệu chứng, bệnh tật và tình trạng cơ thể của bạn từ 10 đến 500 chữ"
+        {...textarea}
+        value={textarea.value}
+        onChange={handleTextareaChange}
       />
       <hr className="border-t border-black/10" />
 

@@ -1,4 +1,4 @@
-import { Doctor, Service, TimeSlot } from '@/types';
+import { Doctor, Booking, Service, TimeSlot, Invoice, Department, Article } from '@/types';
 import TeddyNH from '@/static/doctors/teddynh.png';
 import DinhLD from '@/static/doctors/dinhld.png';
 import XungTD from '@/static/doctors/xungtd.png';
@@ -6,6 +6,12 @@ import TranHT from '@/static/doctors/tranht.png';
 import WilsonJ from '@/static/doctors/wilsonj.png';
 import HiddlestonT from '@/static/doctors/hiddlestont.png';
 import ViDN from '@/static/doctors/vidn.png';
+import exploreKidHeight from '@/static/explore/explore-kid-height.png';
+import exploreBeach from '@/static/explore/explore-beach.png';
+import exploreScientist from '@/static/explore/explore-scientist.png';
+import exploreRoom from '@/static/explore/explore-room.png';
+import exploreDishes from '@/static/explore/explore-dishes.png';
+import exploreOmega3 from '@/static/explore/explore-omega-3.png';
 
 export function mock7DaysTimeSlots(): TimeSlot[] {
   const START_HOUR = 8;
@@ -54,6 +60,7 @@ export function mock7DaysTimeSlots(): TimeSlot[] {
 export function mockDoctors(): Doctor[] {
   return [
     {
+      id: 1,
       name: 'Dương Nhất Vĩ',
       title: 'Phó Trưởng Khoa',
       languages: 'Tiếng Trung, English',
@@ -62,6 +69,7 @@ export function mockDoctors(): Doctor[] {
       isAvailable: Math.random() > 0.3,
     },
     {
+      id: 2,
       name: 'Lý Đa Đình',
       title: 'Trưởng Khoa',
       languages: 'Tiếng Trung, English, 한국어',
@@ -70,6 +78,7 @@ export function mockDoctors(): Doctor[] {
       isAvailable: Math.random() > 0.3,
     },
     {
+      id: 3,
       name: 'Trương Đình Xưng',
       title: 'Trưởng Khoa',
       languages: 'Tiếng Trung, English',
@@ -78,6 +87,7 @@ export function mockDoctors(): Doctor[] {
       isAvailable: Math.random() > 0.3,
     },
     {
+      id: 4,
       name: 'Hồng Tự Trấn',
       title: 'Trưởng Khoa',
       languages: 'Tiếng Trung, English, 한국어',
@@ -86,6 +96,7 @@ export function mockDoctors(): Doctor[] {
       isAvailable: Math.random() > 0.3,
     },
     {
+      id: 5,
       name: 'John Wilson',
       title: 'MD',
       languages: 'Tiếng Trung, English',
@@ -94,6 +105,7 @@ export function mockDoctors(): Doctor[] {
       isAvailable: Math.random() > 0.3,
     },
     {
+      id: 6,
       name: 'Tom Hiddleston',
       title: 'MD',
       languages: 'Tiếng Trung, English, 한국어',
@@ -102,6 +114,7 @@ export function mockDoctors(): Doctor[] {
       isAvailable: Math.random() > 0.3,
     },
     {
+      id: 7,
       name: 'TeddyNH',
       title: 'Trưởng Khoa',
       languages: 'Tiếng Trung, English, 한국어',
@@ -110,25 +123,6 @@ export function mockDoctors(): Doctor[] {
       isAvailable: Math.random() > 0.3,
     },
   ];
-}
-
-export function mockSpecialties() {
-  const specialties = [
-    'Nội khoa',
-    'Ngoại khoa',
-    'Tim mạch',
-    'Phụ khoa',
-    'Sinh Sản',
-    'Nhi khoa',
-    'Nhãn khoa',
-    'Tai mũi họng',
-    'Da liễu',
-    'Chỉnh hình',
-  ];
-  return specialties.map(name => ({
-    name: name,
-    subSpecialties: ['A', 'B', 'C', 'D', 'E', 'F'].map(letter => `${name} ${letter}`),
-  }));
 }
 
 export function mockServices(): Service[] {
@@ -148,6 +142,143 @@ export function mockServices(): Service[] {
       description,
       image: 'https://via.placeholder.com/150',
       price: 100000,
+    },
+  ];
+}
+
+export function mockBookings(): Booking[] {
+  const [d1, d2, d3] = mockDoctors();
+  return [
+    {
+      id: 1,
+      department: 'Nội khoa A',
+      status: 'Ngày mai',
+      patientName: 'Băng Đôn Đôn',
+      schedule: {
+        date: new Date('2025-05-14T09:00:00'),
+        slots: [
+          {
+            hour: 9,
+            isAvailable: true,
+          },
+        ],
+      },
+      doctor: d1,
+    },
+    {
+      id: 2,
+      department: 'Nội khoa B',
+      status: 'Hoàn thành',
+      patientName: 'Băng Đôn Đôn',
+      schedule: {
+        date: new Date('2025-05-14T09:00:00'),
+        slots: [
+          {
+            hour: 9,
+            isAvailable: true,
+          },
+        ],
+      },
+      doctor: d2,
+    },
+    {
+      id: 3,
+      department: 'Nội khoa B',
+      status: 'Hoàn thành',
+      patientName: 'Băng Đôn Đôn',
+      schedule: {
+        date: new Date('2025-05-14T09:00:00'),
+        slots: [
+          {
+            hour: 9,
+            isAvailable: true,
+          },
+        ],
+      },
+      doctor: d3,
+    },
+  ];
+}
+
+export function mockInvoices(): Invoice[] {
+  const [b1, b2] = mockBookings();
+  return [
+    {
+      id: 1,
+      booking: b1,
+    },
+    {
+      id: 2,
+      booking: b2,
+    },
+  ];
+}
+
+export function mockDepartments(): Department[] {
+  const categories = [
+    'Nội khoa',
+    'Ngoại khoa',
+    'Tim mạch',
+    'Phụ khoa',
+    'Sinh Sản',
+    'Nhi khoa',
+    'Nhãn khoa',
+    'Tai mũi họng',
+    'Da liễu',
+    'Chỉnh hình',
+  ];
+
+  return categories.map((name, i) => ({
+    id: i + 1,
+    name,
+    description: `Khoa ${name} đã được chứng nhận chất lượng bởi tổ chức gia đình bác sĩ thế giới WONCA.`,
+    subDepartments: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].map(letter => `${name} ${letter}`),
+  }));
+}
+
+export function mockArticles(): Article[] {
+  return [
+    {
+      id: 1,
+      title: 'Tăng chiều cao, sức bền cho trẻ em - Kỳ 2: Làm gì để thanh niên cao hơn, khỏe hơn?',
+      category: 'Sức khỏe',
+      timeAgo: '2 tháng trước',
+      image: exploreKidHeight,
+    },
+    {
+      id: 2,
+      title: 'Khám phá bãi biển đẹp nhất Việt Nam',
+      category: 'Du lịch',
+      timeAgo: '1 tuần trước',
+      image: exploreBeach,
+    },
+    {
+      id: 3,
+      title: 'Những phát minh khoa học mới nhất năm 2024',
+      category: 'Khoa học',
+      timeAgo: '3 ngày trước',
+      image: exploreScientist,
+    },
+    {
+      id: 4,
+      title: 'Thiết kế phòng ngủ hiện đại cho gia đình',
+      category: 'Nhà cửa',
+      timeAgo: '5 ngày trước',
+      image: exploreRoom,
+    },
+    {
+      id: 5,
+      title: 'Công thức nấu ăn ngon cho cả gia đình',
+      category: 'Ẩm thực',
+      timeAgo: '1 ngày trước',
+      image: exploreDishes,
+    },
+    {
+      id: 6,
+      title: 'Lợi ích của Omega-3 cho sức khỏe',
+      category: 'Dinh dưỡng',
+      timeAgo: '4 ngày trước',
+      image: exploreOmega3,
     },
   ];
 }

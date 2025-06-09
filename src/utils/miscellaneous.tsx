@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 /**
  * Returns a promise that resolves after the specified time in milliseconds
  * @param ms Time to wait in milliseconds
@@ -18,3 +20,16 @@ export const startViewTransition = (callback: () => void) => {
     callback();
   }
 };
+
+export const promptJSON = (data: unknown) =>
+  toast(
+    t => (
+      <code
+        className="whitespace-pre text-left text-sm text-red-800 overflow-x-auto"
+        onClick={() => toast.dismiss(t.id)}
+      >
+        {JSON.stringify(data, undefined, 2)}
+      </code>
+    ),
+    { duration: Infinity, className: 'overflow-x-auto' }
+  );

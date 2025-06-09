@@ -1,18 +1,21 @@
 import { HTMLProps, ReactNode } from 'react';
 import CheckIcon from '../icons/check';
+import { Doctor } from '@/types';
 
 interface DoctorItemProps extends HTMLProps<HTMLDivElement> {
-  doctor: {
-    name: string;
-    title: string;
-    languages: string;
-    specialties: string;
-    image: string;
-  };
-  suffix: ReactNode;
+  doctor: Doctor;
+  suffix?: ReactNode;
+  withLanguages?: boolean;
+  description?: ReactNode;
 }
 
-export default function DoctorItem({ doctor, suffix, ...props }: DoctorItemProps) {
+export default function DoctorItem({
+  doctor,
+  suffix,
+  withLanguages,
+  description,
+  ...props
+}: DoctorItemProps) {
   return (
     <div className="flex flex-grow items-center justify-center gap-4 cursor-pointer" {...props}>
       <div className="flex flex-grow justify-center gap-2.5 self-stretch overflow-hidden">
@@ -24,10 +27,10 @@ export default function DoctorItem({ doctor, suffix, ...props }: DoctorItemProps
             <div className="text-[15px] font-medium text-neutral-900">{doctor.name}</div>
             <div className="w-28">{doctor.title}</div>
           </div>
-          <div>{doctor.languages}</div>
-          <div className="pt-1">
+          {withLanguages && <div>{doctor.languages}</div>}
+          <div className="pt-2">
             <div className="flex items-center">
-              <p>{doctor.specialties}</p>
+              <p>{description ?? doctor.specialties}</p>
             </div>
           </div>
         </div>

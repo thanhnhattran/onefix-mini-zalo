@@ -5,6 +5,8 @@
   --zaui-light-body-background-color: var(--background);
   --zaui-light-input-border-color: rgba(0, 0, 0, 0.1);
   --zaui-light-input-hover-border-color: var(--primary);
+  --zaui-light-option-selected-color: var(--primary);
+  --zaui-light-radio-checked-background: var(--primary);
 
   --safe-top: var(--zaui-safe-area-inset-top, env(safe-area-inset-top, 30px));
   --safe-bottom: max(16px, var(--zaui-safe-area-inset-bottom, env(safe-area-inset-bottom, 30px)));
@@ -16,7 +18,8 @@
 }
 
 .zaui-select {
-  &.zaui-input-affix-wrapper {
+  &.zaui-input-affix-wrapper,
+  .zaui-input-affix-wrapper {
     border-radius: 100px;
   }
 }
@@ -38,4 +41,8 @@
     bottom: 0;
     right: 0;
   }
+}
+
+.zaui-sheet-content {
+  max-height: calc(100vh - 200px);
 }

@@ -1,8 +1,8 @@
-import Header from "./header";
-import Footer from "./footer";
-import { Toaster } from "react-hot-toast";
-import { ScrollRestoration } from "./scroll-restoration";
-import Page from "./page";
+import Header from './header';
+import Footer from './footer';
+import { Toaster } from 'react-hot-toast';
+import { ScrollRestoration } from './scroll-restoration';
+import Page from './page';
 
 export default function Layout() {
   return (
@@ -10,12 +10,7 @@ export default function Layout() {
       <Header />
       <Page />
       <Footer />
-      <Toaster
-        containerClassName="toast-container"
-        containerStyle={{
-          top: "calc(50% - 24px)",
-        }}
-      />
+      <Toaster containerClassName="toast-container" position="bottom-center" />
       <ScrollRestoration />
     </div>
   );

@@ -8,6 +8,14 @@ import ExplorePage from './pages/explore';
 import ServiceDetailPage from './pages/service-detail';
 import NotFound from './pages/404';
 import BookingPage from './pages/booking';
+import ScheduleHistoryPage from './pages/schedule/history';
+import ScheduleDetailPage from './pages/schedule/detail';
+import ChatPage from './pages/chat';
+import ProfilePage from './pages/profile';
+import InvoicesPage from './pages/invoices';
+import AskPage from './pages/ask';
+import FeedbackPage from './pages/feedback';
+import SearchResultPage from './pages/search';
 
 const router = createBrowserRouter(
   [
@@ -18,6 +26,10 @@ const router = createBrowserRouter(
         {
           path: '/',
           element: <HomePage />,
+        },
+        {
+          path: '/search',
+          element: <SearchResultPage />,
         },
         {
           path: '/categories',
@@ -54,6 +66,56 @@ const router = createBrowserRouter(
           handle: {
             back: true,
             title: 'Đặt lịch khám',
+          },
+        },
+        {
+          path: '/ask',
+          element: <AskPage />,
+          handle: {
+            back: true,
+            title: 'Gửi câu hỏi',
+          },
+        },
+        {
+          path: '/feedback',
+          element: <FeedbackPage />,
+          handle: {
+            back: true,
+            title: 'Gửi phản ảnh',
+          },
+        },
+        {
+          path: '/schedule',
+          element: <ScheduleHistoryPage />,
+          handle: {
+            back: true,
+            title: 'Lịch khám',
+          },
+        },
+        {
+          path: '/schedule/:id',
+          element: <ScheduleDetailPage />,
+          handle: {
+            back: true,
+            title: 'Chi tiết',
+          },
+        },
+        {
+          path: '/chat',
+          element: <ChatPage />,
+        },
+        {
+          path: '/profile',
+          element: <ProfilePage />,
+          handle: {
+            profile: true,
+          },
+        },
+        {
+          path: '/invoices',
+          element: <InvoicesPage />,
+          handle: {
+            back: true,
           },
         },
         {
