@@ -28,8 +28,8 @@ function ProfilePage() {
         ))}
       </div>
       <div className="flex-1 flex flex-col rounded-t-3xl bg-white py-8 space-y-9 overflow-y-auto">
-        <Section title="Dịch vụ y tế" viewMore>
-          <div className="grid grid-cols-4 px-3 pt-6 text-center text-xs text-neutral-900">
+        <Section title="Dịch vụ y tế" viewMore="/services">
+          <div className="grid grid-cols-4 px-3 pt-6 text-center text-xs text-disabled">
             {[
               { icon: prescription, label: "Toa thuốc" },
               { icon: calendar, label: "Lịch hẹn" },

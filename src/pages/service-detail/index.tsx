@@ -1,23 +1,14 @@
-import Tabs from '@/components/tabs';
-import { serviceState } from '@/state';
-import { useAtomValue } from 'jotai';
-import { useParams } from 'react-router-dom';
-import NotFound from '../404';
-import { useState } from 'react';
-import Consultation from './consultation';
-import DoctorSelector from '@/components/form/doctor-selector';
-import FabForm from '@/components/form/fab-form';
-import { Doctor } from '@/types';
-import { Icon } from 'zmp-ui';
+import { useState } from "react";
+import Tabs from "@/components/tabs";
+import Tab1 from "./tab1";
+import Tab2 from "./tab2";
+import Tab3 from "./tab3";
+import { useSearchParams } from "react-router-dom";
 
 function ServiceDetailPage() {
-  const { id } = useParams();
-  const service = useAtomValue(serviceState(id!));
-  const [activeTab, setActiveTab] = useState(0);
-
-  if (!service) {
-    return <NotFound />;
-  }
+  const [query] = useSearchParams();
+  const tab = query.get("tab");
+  const [activeTab, setActiveTab] = useState(Number(tab) || 0);
 
   return (
     <Tabs
@@ -25,38 +16,16 @@ function ServiceDetailPage() {
       onTabChange={setActiveTab}
       tabs={[
         {
-          name: 'Giới thiệu',
-          content: () => <div dangerouslySetInnerHTML={{ __html: service.description }} />,
+          name: "Giới thiệu",
+          content: Tab1,
         },
         {
-          name: 'Bác sĩ',
-          content: () => (
-            <FabForm
-              fab={[
-                {
-                  label: (
-                    <span className="space-x-2 flex items-center">
-                      <span>Chat với bác sĩ</span>
-                      <Icon icon="zi-chat" />
-                    </span>
-                  ),
-                },
-                {
-                  label: 'Đặt lịch khám',
-                },
-              ]}
-            >
-              <DoctorSelector
-                onChange={function (value: Doctor): void {
-                  throw new Error('Function not implemented.');
-                }}
-              />
-            </FabForm>
-          ),
+          name: "Bác sĩ",
+          content: Tab2,
         },
         {
-          name: 'Tư vấn',
-          content: Consultation,
+          name: "Tư vấn",
+          content: Tab3,
         },
       ]}
     />

@@ -7,7 +7,12 @@ import Section from "@/components/section";
 
 export default function FeaturedServices() {
   return (
-    <Section className="pt-5" title="Dịch vụ nổi bật" viewMore isCard>
+    <Section
+      className="pt-5"
+      title="Dịch vụ nổi bật"
+      viewMore="/services"
+      isCard
+    >
       <div className="grid grid-cols-2 gap-2.5">
         <div className="relative flex flex-col items-start gap-1 bg-cover bg-center">
           <ServiceHighlight
@@ -33,6 +38,7 @@ export default function FeaturedServices() {
         <div className="flex flex-col gap-2.5">
           <ServiceHighlight
             title="Xóa cận"
+            to="/service/2"
             subtitle="Nhãn khoa"
             color="#0F777D"
             background="linear-gradient(145deg, #BBFCFE 1.2%, #8CF5F9 95.96%)"
@@ -40,6 +46,7 @@ export default function FeaturedServices() {
           />
           <ServiceHighlight
             title="Trị nám"
+            to="/service/3"
             subtitle="Da liễu"
             color="#D9861C"
             background="linear-gradient(145deg, #FFE2B0 1.2%, #FFF9E7 95.96%)"

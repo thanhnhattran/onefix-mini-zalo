@@ -1,7 +1,7 @@
 import DoctorItem from "@/components/items/doctor";
 import PolarizedList from "@/components/polarized-list";
-import { scheduleByIdState } from "@/state";
-import { useAtomValue } from "jotai";
+import { bookingFormState, scheduleByIdState } from "@/state";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useNavigate, useParams } from "react-router-dom";
 import NotFound from "../404";
 import { TestResult } from "./test-result";
@@ -11,6 +11,7 @@ function ScheduleDetailPage() {
   const { id } = useParams();
   const schedule = useAtomValue(scheduleByIdState(Number(id)));
   const navigate = useNavigate();
+  const setBookingData = useSetAtom(bookingFormState);
 
   if (!schedule) {
     return <NotFound />;
@@ -19,8 +20,12 @@ function ScheduleDetailPage() {
   return (
     <FabForm
       fab={{
-        label: "Tái khám",
+        children: "Tái khám",
         onClick() {
+          setBookingData((prev) => ({
+            ...prev,
+            ...schedule,
+          }));
           navigate("/booking");
         },
       }}
@@ -28,7 +33,7 @@ function ScheduleDetailPage() {
       <div className="flex w-full flex-col px-4 py-3 space-y-3">
         <div className="flex flex-col justify-center gap-3 rounded-xl bg-white p-4">
           <div className="flex items-center justify-center gap-[115px]">
-            <div className="text-base font-medium leading-6 text-neutral-900">
+            <div className="text-base font-medium text-disabled">
               Nội khoa tổng quát
             </div>
             <div className="text-xs text-neutral-400">Hoàn thành</div>
@@ -46,10 +51,8 @@ function ScheduleDetailPage() {
             ]}
           />
         </div>
-        <div className="flex flex-col justify-center gap-4 rounded-xl bg-white p-4 text-base leading-normal text-neutral-950">
-          <div className="font-medium leading-6 text-neutral-900">
-            Chi tiết phiếu khám
-          </div>
+        <div className="flex flex-col justify-center gap-4 rounded-xl bg-white p-4 text-base text-neutral-950">
+          <div className="font-medium text-disabled">Chi tiết phiếu khám</div>
           <TestResult
             testType="Xét ngiệm"
             testName="X-Quang"

@@ -1,39 +1,50 @@
-import { DashedDivider } from '@/components/dashed-divider';
-import FabForm from '@/components/form/fab-form';
-import SuccessIcon from '@/components/icons/success';
-import PolarizedList from '@/components/polarized-list';
-import { bookingFormState, userState } from '@/state';
-import { useAtomValue } from 'jotai';
-import { useNavigate } from 'react-router-dom';
+import { DashedDivider } from "@/components/dashed-divider";
+import FabForm from "@/components/form/fab-form";
+import SuccessIcon from "@/components/icons/success";
+import PolarizedList from "@/components/polarized-list";
+import { bookingFormState, userState } from "@/state";
+import { formatShortDate, formatTimeSlot } from "@/utils/format";
+import { useAtomValue } from "jotai";
+import { useNavigate } from "react-router-dom";
 
 export default function Step3() {
   const navigate = useNavigate();
   const { userInfo } = useAtomValue(userState);
-  const booking = useAtomValue(bookingFormState);
+  const formData = useAtomValue(bookingFormState);
 
   return (
     <FabForm
       fab={{
-        label: 'Xem lịch hẹn của tôi',
+        children: "Xem lịch hẹn của tôi",
         onClick: () => {
-          navigate('/history');
+          navigate("/schedule");
         },
       }}
     >
       <div className="p-4 h-full flex items-center">
         <div className="flex w-full flex-col items-center gap-4 rounded-2xl bg-white px-4 py-8">
           <SuccessIcon />
-          <div className="self-stretch text-center text-lg font-medium text-neutral-900">
+          <div className="self-stretch text-center text-lg font-medium text-disabled">
             Đặt lịch thành công
           </div>
           <DashedDivider />
           <PolarizedList
             items={[
-              ['Tên', userInfo.name],
-              ['Khu vực bệnh viện', 'Bệnh viện Quốc tế Gia Hội Thượng Hải'],
-              ['Khoa', 'Nội khoa A'],
-              ['Thời gian khám bệnh', '2022.02.16 Thứ Tư 09:00-09:30'],
-              ['Loại khám bệnh', 'Khám bệnh\nKhám lần đầu'],
+              ["Tên", userInfo.name],
+              formData.department && ["Khoa", formData.department.name],
+              formData.doctor && ["Bác sĩ", formData.doctor.name],
+              formData.slot && [
+                "Thời gian khám bệnh",
+                `${formatShortDate(formData.slot.date)} ${formatTimeSlot(formData.slot.time)}`,
+              ],
+              formData.symptoms.length > 0 && [
+                "Triệu chứng",
+                formData.symptoms.join(", "),
+              ],
+              formData.description.trim().length > 0 && [
+                "Mô tả",
+                formData.description,
+              ],
             ]}
           />
         </div>

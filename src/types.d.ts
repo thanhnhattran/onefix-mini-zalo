@@ -1,17 +1,26 @@
 export interface Service {
-  id: string;
+  id: number;
   name: string;
   description: string;
   image: string;
   price: number;
+  department: Department;
 }
 
 interface TimeSlot {
   date: Date;
+  time: {
+    hour: number;
+    half?: boolean;
+  };
+}
+
+interface AvailableTimeSlots {
+  date: Date;
   slots: {
     hour: number;
     half?: boolean;
-    isAvailable: boolean;
+    isAvailable?: boolean;
   }[];
 }
 
@@ -32,7 +41,7 @@ export interface SymptomDescription {
 }
 
 export interface Inquiry extends SymptomDescription {
-  department: string;
+  department?: Department;
 }
 
 export interface Feedback {
@@ -44,11 +53,11 @@ export interface Feedback {
 
 export interface Booking {
   id: number;
-  department: string;
   status: string;
   patientName: string;
   schedule: TimeSlot;
   doctor: Doctor;
+  department: Department;
 }
 
 export interface Invoice {
@@ -56,11 +65,17 @@ export interface Invoice {
   booking: Booking;
 }
 
+export interface DepartmentGroup {
+  id: number;
+  name: string;
+  description: string;
+}
+
 export interface Department {
   id: number;
   name: string;
   description: string;
-  subDepartments: string[];
+  groupId: number;
 }
 
 interface Article {

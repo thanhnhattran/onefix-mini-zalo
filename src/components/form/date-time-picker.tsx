@@ -1,53 +1,31 @@
 import { useMemo, useState } from "react";
 import ChevronDownIcon from "../icons/chevron-down";
-import { TimeSlot } from "@/types";
+import { AvailableTimeSlots, TimeSlot } from "@/types";
 import { formatDayName, formatShortDate, formatTimeSlot } from "@/utils/format";
 
-export interface SelectedSlot {
-  date?: Date;
-  hour?: number;
-  half?: boolean;
-}
-
 export interface DateTimePickerProps {
-  value?: SelectedSlot;
-  onChange: (value: SelectedSlot) => void;
-  slots: TimeSlot[];
+  value?: Partial<TimeSlot>;
+  onChange: (value: Partial<TimeSlot>) => void;
+  slots: AvailableTimeSlots[];
 }
 
 function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
-    value?.date
-  );
-  const [selectedTime, setSelectedTime] = useState<
-    { hour: number; half?: boolean; isAvailable: boolean } | undefined
-  >(undefined);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(value?.date);
+  const [selectedTime, setSelectedTime] = useState(value?.time);
+  const [isExpanded, setIsExpanded] = useState(!!value?.date && !!value.time);
 
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date);
+    setSelectedTime(undefined);
     setIsExpanded(true);
-    if (selectedTime) {
-      onChange({
-        date,
-        ...selectedTime,
-      });
-    } else {
-      onChange({ date });
-    }
+    onChange({ date });
   };
 
-  const handleTimeSelect = (time: {
-    hour: number;
-    half?: boolean;
-    isAvailable: boolean;
-  }) => {
-    if (!time.isAvailable) return;
+  const handleTimeSelect = (time: TimeSlot["time"]) => {
     setSelectedTime(time);
     onChange({
       date: selectedDate,
-      hour: time.hour,
-      half: time.half,
+      time,
     });
   };
 
@@ -102,7 +80,7 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
         }`}
       >
         {timeSlots.map((time, timeIndex) => {
-          const formattedTime = formatTimeSlot(time.hour, time.half);
+          const formattedTime = formatTimeSlot(time);
           const isSelected =
             selectedTime?.hour === time.hour &&
             selectedTime?.half === time.half;

@@ -1,11 +1,13 @@
 import { ReactNode } from "react";
 import ArrowRightIcon from "./icons/arrow-right";
+import { To } from "react-router-dom";
+import TransitionLink from "./transition-link";
 
 interface SectionProps {
   children: ReactNode;
   className?: string;
   title?: string;
-  viewMore?: boolean;
+  viewMore?: To;
   isCard?: boolean;
 }
 
@@ -22,10 +24,13 @@ export default function Section({
         <div className="font-medium text-neutral-800 text-base">{title}</div>
       )}
       {viewMore && (
-        <div className="flex items-center justify-center gap-1">
+        <TransitionLink
+          to={viewMore}
+          className="flex items-center justify-center gap-1"
+        >
           <div className="text-xs text-neutral-400">Xem tất cả</div>
           <ArrowRightIcon className="h-3 w-3" />
-        </div>
+        </TransitionLink>
       )}
     </div>
   );

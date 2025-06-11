@@ -1,13 +1,8 @@
-import { ReactNode, useState } from 'react';
-import { Button } from '../button';
-
-interface Fab {
-  label: ReactNode;
-  onClick?: () => void;
-}
+import { ReactNode, useState } from "react";
+import { Button, ButtonProps } from "../button";
 
 interface FabFormProps {
-  fab: Fab | Fab[];
+  fab: ButtonProps | ButtonProps[];
   children: ReactNode;
   onSubmit?: () => Promise<void>;
 }
@@ -37,12 +32,9 @@ function FabForm({ fab, children, onSubmit }: FabFormProps) {
             key={i}
             appearAnimation
             type="submit"
-            onClick={fab.onClick}
             loading={isLoading}
-            disabled={isLoading}
-          >
-            {fab.label}
-          </Button>
+            {...fab}
+          />
         ))}
       </div>
     </form>

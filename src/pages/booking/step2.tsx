@@ -1,8 +1,10 @@
-import FabForm from '@/components/form/fab-form';
-import SymptomInquiry from '@/components/form/symptom-inquiry';
-import { bookingFormState } from '@/state';
-import { useAtom } from 'jotai';
-import { useNavigate } from 'react-router-dom';
+import FabForm from "@/components/form/fab-form";
+import SymptomInquiry from "@/components/form/symptom-inquiry";
+import { bookingFormState } from "@/state";
+import { promptJSON } from "@/utils/miscellaneous";
+import { useAtom } from "jotai";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Step2() {
   const [formData, setFormData] = useAtom(bookingFormState);
@@ -11,9 +13,15 @@ export default function Step2() {
   return (
     <FabForm
       fab={{
-        label: 'Đặt lịch khám',
+        children: "Đặt lịch khám",
+        disabled:
+          !formData.symptoms.length || !formData.description.trim().length,
+        onDisabledClick() {
+          toast.error("Vui lòng điền đầy đủ thông tin!");
+        },
         onClick: () => {
-          navigate('/booking/3');
+          promptJSON(formData);
+          navigate("/booking/3");
         },
       }}
     >

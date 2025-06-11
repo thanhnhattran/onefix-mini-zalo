@@ -24,7 +24,11 @@ export function NewsItem() {
 
 export default function HealthNews() {
   return (
-    <Section className="py-4 space-y-3" title="Tin tức sức khỏe" viewMore>
+    <Section
+      className="py-4 space-y-3"
+      title="Tin tức sức khỏe"
+      viewMore="/explore"
+    >
       <NewsItem />
       <NewsItem />
       <NewsItem />

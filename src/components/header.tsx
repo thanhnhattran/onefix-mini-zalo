@@ -21,7 +21,7 @@ function ProfileHeader() {
         src={userInfo.avatar}
         className="rounded-full h-10 w-10 object-cover border border-white"
       />
-      <div className="w-40 font-medium text-neutral-900">{userInfo.name}</div>
+      <div className="w-40 font-medium text-disabled">{userInfo.name}</div>
     </div>
   );
 }

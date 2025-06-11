@@ -27,7 +27,7 @@ export default function DoctorItem({
         </div>
         <div className="font-roboto flex flex-grow flex-col gap-1 text-xs text-neutral-400 overflow-hidden">
           <div className="flex items-center gap-1.5 truncate">
-            <div className="text-base font-medium text-neutral-900">
+            <div className="text-base font-medium text-disabled">
               {doctor.name}
             </div>
             <div className="w-28">{doctor.title}</div>

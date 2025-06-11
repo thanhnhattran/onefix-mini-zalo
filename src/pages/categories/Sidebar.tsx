@@ -1,9 +1,9 @@
-import { departmentsState } from "@/state";
+import { departmentGroupsState } from "@/state";
 import { useAtomValue } from "jotai";
 import { useState } from "react";
 
 export default function Sidebar() {
-  const categories = useAtomValue(departmentsState);
+  const categories = useAtomValue(departmentGroupsState);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
 
   return (
