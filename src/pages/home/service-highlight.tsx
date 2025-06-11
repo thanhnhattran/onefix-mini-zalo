@@ -21,7 +21,7 @@ function ServiceHighlight(props: {
     >
       <img src={props.image} className="absolute bottom-0 right-0 z-[2] w-20" />
       <div
-        className="z-[3] text-[15px] font-medium"
+        className="z-[3] text-base font-medium"
         style={{ color: props.color }}
       >
         {props.title}

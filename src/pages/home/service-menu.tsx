@@ -11,7 +11,7 @@ export default function ServiceMenu() {
       <ServiceItem to="/ask" icon={hospital} label="Tư vấn" />
       <ServiceItem to="/categories" icon={lung} label="Danh mục" />
       <ServiceItem icon={drug} label="Toa thuốc" />
-      <ServiceItem icon={invoice} label="Hóa đơn" />
+      <ServiceItem to="/invoices" icon={invoice} label="Hóa đơn" />
       <ServiceItem to="/services" icon={all} label="Tất cả" />
     </div>
   );

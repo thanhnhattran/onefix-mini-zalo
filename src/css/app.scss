@@ -1,6 +1,7 @@
 :root {
   --primary: #00bead;
   --background: #f2f9f9;
+  --disabled: #9a9a9a;
 
   --zaui-light-body-background-color: var(--background);
   --zaui-light-input-border-color: rgba(0, 0, 0, 0.1);
@@ -9,7 +10,10 @@
   --zaui-light-radio-checked-background: var(--primary);
 
   --safe-top: var(--zaui-safe-area-inset-top, env(safe-area-inset-top, 30px));
-  --safe-bottom: max(16px, var(--zaui-safe-area-inset-bottom, env(safe-area-inset-bottom, 30px)));
+  --safe-bottom: max(
+    16px,
+    var(--zaui-safe-area-inset-bottom, env(safe-area-inset-bottom, 30px))
+  );
 }
 
 :not(input):not(textarea) {

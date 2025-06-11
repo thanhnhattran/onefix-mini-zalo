@@ -19,7 +19,7 @@ export default function Section({
   const header = (title || viewMore) && (
     <div className="flex items-center justify-between flex-wrap gap-1">
       {title && (
-        <div className="font-medium text-neutral-800 text-[15px]">{title}</div>
+        <div className="font-medium text-neutral-800 text-base">{title}</div>
       )}
       {viewMore && (
         <div className="flex items-center justify-center gap-1">

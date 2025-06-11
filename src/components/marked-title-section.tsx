@@ -29,7 +29,7 @@ function MarkedTitleSection({
             />
           </svg>
         </div>
-        <span className="text-[15px] font-medium">{title}</span>
+        <span className="text-base font-medium">{title}</span>
       </div>
       {children}
     </div>

@@ -1,9 +1,5 @@
-import { useAtom, useAtomValue, useSetAtom } from 'jotai';
-import { MutableRefObject, useLayoutEffect, useMemo, useState } from 'react';
+import { MutableRefObject, useLayoutEffect, useState } from 'react';
 import { UIMatch, useMatches } from 'react-router-dom';
-import { getDefaultOptions, isIdentical } from '@/utils/cart';
-import { getConfig } from '@/utils/template';
-import { openChat, purchase } from 'zmp-sdk';
 
 export function useRealHeight(
   element: MutableRefObject<HTMLDivElement | null>,

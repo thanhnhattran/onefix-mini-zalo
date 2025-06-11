@@ -11,7 +11,7 @@ import {
   mockDepartments,
 } from './utils/mock';
 import { getUserInfo } from 'zmp-sdk';
-import { wait } from './utils/miscellaneous';
+import { toLowerCaseNonAccentVietnamese, wait } from './utils/miscellaneous';
 
 export const userState = atom(() =>
   getUserInfo({
@@ -108,21 +108,24 @@ export const searchResultState = atomFamily((keyword: string) =>
       const doctors = get(doctorsState);
       const departments = get(departmentsState);
       const news = get(articlesState);
+      const normalizedKeyword = toLowerCaseNonAccentVietnamese(keyword);
       return {
         doctors: doctors.filter(
           d =>
-            d.name.toLowerCase().includes(keyword.toLowerCase()) ||
-            d.specialties.toLowerCase().includes(keyword.toLowerCase())
+            toLowerCaseNonAccentVietnamese(d.name).includes(normalizedKeyword) ||
+            toLowerCaseNonAccentVietnamese(d.specialties).includes(normalizedKeyword)
         ),
         departments: departments.filter(
           d =>
-            d.name.toLowerCase().includes(keyword.toLowerCase()) ||
-            d.subDepartments.some(sd => sd.toLowerCase().includes(keyword.toLowerCase()))
+            toLowerCaseNonAccentVietnamese(d.name).includes(normalizedKeyword) ||
+            d.subDepartments.some(sd =>
+              toLowerCaseNonAccentVietnamese(sd).includes(normalizedKeyword)
+            )
         ),
         news: news.filter(
           n =>
-            n.title.toLowerCase().includes(keyword.toLowerCase()) ||
-            n.category.toLowerCase().includes(keyword.toLowerCase())
+            toLowerCaseNonAccentVietnamese(n.title).includes(normalizedKeyword) ||
+            toLowerCaseNonAccentVietnamese(n.category).includes(normalizedKeyword)
         ),
       };
     })

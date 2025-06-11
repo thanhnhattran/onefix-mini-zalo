@@ -1,7 +1,7 @@
-import { useMemo, useState } from 'react';
-import ChevronDownIcon from '../icons/chevron-down';
-import { TimeSlot } from '@/types';
-import { formatDayName, formatShortDate, formatTimeSlot } from '@/utils/format';
+import { useMemo, useState } from "react";
+import ChevronDownIcon from "../icons/chevron-down";
+import { TimeSlot } from "@/types";
+import { formatDayName, formatShortDate, formatTimeSlot } from "@/utils/format";
 
 export interface SelectedSlot {
   date?: Date;
@@ -16,7 +16,9 @@ export interface DateTimePickerProps {
 }
 
 function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(value?.date);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    value?.date
+  );
   const [selectedTime, setSelectedTime] = useState<
     { hour: number; half?: boolean; isAvailable: boolean } | undefined
   >(undefined);
@@ -35,7 +37,11 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
     }
   };
 
-  const handleTimeSelect = (time: { hour: number; half?: boolean; isAvailable: boolean }) => {
+  const handleTimeSelect = (time: {
+    hour: number;
+    half?: boolean;
+    isAvailable: boolean;
+  }) => {
     if (!time.isAvailable) return;
     setSelectedTime(time);
     onChange({
@@ -54,7 +60,9 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
   };
 
   const timeSlots = useMemo(() => {
-    const dateSlot = slots.find(slot => slot.date.toDateString() === selectedDate?.toDateString());
+    const dateSlot = slots.find(
+      (slot) => slot.date.toDateString() === selectedDate?.toDateString()
+    );
     return dateSlot?.slots || [];
   }, [slots, selectedDate]);
 
@@ -64,7 +72,8 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
         {slots.map(({ date }, index) => {
           const dayName = formatDayName(date);
           const shortDate = formatShortDate(date);
-          const isSelected = selectedDate?.toDateString() === date.toDateString();
+          const isSelected =
+            selectedDate?.toDateString() === date.toDateString();
 
           return (
             <button
@@ -72,14 +81,16 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
               key={index}
               onClick={() => handleDateSelect(date)}
               className={`flex flex-none basis-16 flex-col justify-center items-center gap-2 px-1 py-2.5 font-medium relative ${
-                isSelected ? 'text-primary' : ''
+                isSelected ? "text-primary" : ""
               }`}
             >
-              {isSelected && <div className="bg-primary opacity-10 absolute inset-0 rounded-lg" />}
-              <span className="text-center text-[13px] whitespace-nowrap opacity-50">
+              {isSelected && (
+                <div className="bg-primary opacity-10 absolute inset-0 rounded-lg" />
+              )}
+              <span className="text-center text-xs whitespace-nowrap opacity-50">
                 {dayName}
               </span>
-              <span className="text-center text-[15px]">{shortDate}</span>
+              <span className="text-center text-base">{shortDate}</span>
             </button>
           );
         })}
@@ -87,12 +98,14 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
 
       <div
         className={`grid grid-cols-4 gap-3 px-4 overflow-hidden transition-all duration-300 ease-in-out ${
-          isExpanded ? 'max-h-[500px] opacity-100 pt-4' : 'max-h-0 opacity-0'
+          isExpanded ? "max-h-[500px] opacity-100 pt-4" : "max-h-0 opacity-0"
         }`}
       >
         {timeSlots.map((time, timeIndex) => {
           const formattedTime = formatTimeSlot(time.hour, time.half);
-          const isSelected = selectedTime?.hour === time.hour && selectedTime?.half === time.half;
+          const isSelected =
+            selectedTime?.hour === time.hour &&
+            selectedTime?.half === time.half;
 
           return (
             <button
@@ -101,8 +114,10 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
               onClick={() => handleTimeSelect(time)}
               disabled={!time.isAvailable}
               className={`flex items-center justify-center rounded-3xl p-[7.5px] text-center ${
-                isSelected ? 'bg-primary text-white' : 'bg-slate-50 text-neutral-700'
-              } ${!time.isAvailable ? 'opacity-25 cursor-not-allowed' : ''}`}
+                isSelected
+                  ? "bg-primary text-white"
+                  : "bg-slate-50 text-neutral-700"
+              } ${!time.isAvailable ? "opacity-25 cursor-not-allowed" : ""}`}
             >
               {formattedTime}
             </button>
@@ -116,7 +131,7 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
         className="flex justify-center items-center h-12"
       >
         <ChevronDownIcon
-          className={`transition-transform duration-300 ${isExpanded ? '' : 'rotate-180'}`}
+          className={`transition-transform duration-300 ${isExpanded ? "" : "rotate-180"}`}
         />
       </button>
     </div>

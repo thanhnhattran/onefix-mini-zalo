@@ -21,7 +21,7 @@ export default function FeaturedServices() {
                   background: "linear-gradient(89deg, #286bab, #77acdf)",
                 }}
               >
-                <span className="text-[10px] text-white">XEM</span>
+                <span className="text-4xs text-white">XEM</span>
                 <ArrowRightIcon width={10} height={10} color="white" />
               </button>
             }

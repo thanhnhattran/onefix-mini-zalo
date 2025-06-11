@@ -1,6 +1,6 @@
-import DoctorItem from '@/components/items/doctor';
-import TransitionLink from '@/components/transition-link';
-import { Booking } from '@/types';
+import DoctorItem from "@/components/items/doctor";
+import TransitionLink from "@/components/transition-link";
+import { Booking } from "@/types";
 
 export interface ScheduleItemProps {
   schedule: Booking;
@@ -13,8 +13,10 @@ export function ScheduleItem({ schedule }: ScheduleItemProps) {
       className="font-roboto flex w-full flex-col gap-3 rounded-xl bg-white p-4 leading-[normal] "
     >
       <div className="flex items-center justify-between gap-11 font-medium">
-        <div className="text-[15px] leading-6 text-neutral-900">{schedule.department}</div>
-        <div className="text-[13px] text-teal-500">{schedule.status}</div>
+        <div className="text-base leading-6 text-neutral-900">
+          {schedule.department}
+        </div>
+        <div className="text-xs text-teal-500">{schedule.status}</div>
       </div>
       <hr className="border-t border-black/10" />
       <DoctorItem doctor={schedule.doctor} />
@@ -28,9 +30,13 @@ export function ScheduleItem({ schedule }: ScheduleItemProps) {
           <p>{schedule.date}</p>
         </span>
       </div>
-      <div className="flex items-center justify-end gap-[5px] pt-1 text-center text-[13px]">
-        <div className="rounded-md bg-slate-50 px-2 py-1.5 text-neutral-900">Chat với bác sĩ</div>
-        <div className="rounded-md bg-emerald-500/10 px-2 py-1.5 text-green-500">Xem chi tiết</div>
+      <div className="flex items-center justify-end gap-[5px] pt-1 text-center text-xs">
+        <div className="rounded-md bg-slate-50 px-2 py-1.5 text-neutral-900">
+          Chat với bác sĩ
+        </div>
+        <div className="rounded-md bg-emerald-500/10 px-2 py-1.5 text-green-500">
+          Xem chi tiết
+        </div>
       </div>
     </TransitionLink>
   );

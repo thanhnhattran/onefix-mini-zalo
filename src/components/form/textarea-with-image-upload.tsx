@@ -1,8 +1,8 @@
-import { ChangeEvent, useState } from 'react';
-import { Input } from 'zmp-ui';
-import { PlusIcon } from '../icons/plus-icon';
-import { chooseImage } from 'zmp-sdk';
-import { TextAreaProps } from 'zmp-ui/input';
+import { ChangeEvent, useState } from "react";
+import { Input } from "zmp-ui";
+import { PlusIcon } from "../icons/plus-icon";
+import { chooseImage } from "zmp-sdk";
+import { TextAreaProps } from "zmp-ui/input";
 
 interface TextareaWithImageUploadProps {
   textarea: {
@@ -15,7 +15,10 @@ interface TextareaWithImageUploadProps {
   };
 }
 
-function TextareaWithImageUpload({ textarea, images }: TextareaWithImageUploadProps) {
+function TextareaWithImageUpload({
+  textarea,
+  images,
+}: TextareaWithImageUploadProps) {
   const [charCount, setCharCount] = useState(0);
   const MAX_CHARS = 500;
   const MIN_CHARS = 10;
@@ -34,7 +37,7 @@ function TextareaWithImageUpload({ textarea, images }: TextareaWithImageUploadPr
   };
 
   return (
-    <div className="flex flex-grow flex-col space-y-4 rounded-[10px] border border-black/10 px-3 py-4 text-sm text-[darkgray]">
+    <div className="flex flex-grow flex-col space-y-4 rounded-[10px] border border-black/10 px-3 py-4 text-sm text-disabled">
       <Input.TextArea
         className="p-0"
         autoHeight
@@ -55,8 +58,8 @@ function TextareaWithImageUpload({ textarea, images }: TextareaWithImageUploadPr
           <PlusIcon />
         </button>
         <p className="flex-1">
-          Tải lên hình ảnh liên quan (phiếu kiểm tra, CT, hồ sơ bệnh án, vùng bị bệnh, thuốc men,
-          v.v.)
+          Tải lên hình ảnh liên quan (phiếu kiểm tra, CT, hồ sơ bệnh án, vùng bị
+          bệnh, thuốc men, v.v.)
         </p>
       </div>
 
@@ -70,7 +73,9 @@ function TextareaWithImageUpload({ textarea, images }: TextareaWithImageUploadPr
                 className="h-20 w-20 object-cover rounded-lg"
               />
               <button
-                onClick={() => images.onChange(images.values.filter((_, i) => i !== index))}
+                onClick={() =>
+                  images.onChange(images.values.filter((_, i) => i !== index))
+                }
                 className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
               >
                 ×

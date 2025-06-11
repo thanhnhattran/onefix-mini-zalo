@@ -1,13 +1,13 @@
-import ArrowRightIcon from '@/components/icons/arrow-right';
-import { doctorsState, userState } from '@/state';
-import { useAtomValue } from 'jotai';
-import prescription from '@/static/services/prescription.svg';
-import calendar from '@/static/services/calendar.svg';
-import clipboard from '@/static/services/clipboard.svg';
-import heart from '@/static/services/heart.svg';
-import Section from '@/components/section';
-import { Action } from './action';
-import { VisitedDoctor } from './visited-doctor';
+import ArrowRightIcon from "@/components/icons/arrow-right";
+import { doctorsState, userState } from "@/state";
+import { useAtomValue } from "jotai";
+import prescription from "@/static/services/prescription.svg";
+import calendar from "@/static/services/calendar.svg";
+import clipboard from "@/static/services/clipboard.svg";
+import heart from "@/static/services/heart.svg";
+import Section from "@/components/section";
+import { Action } from "./action";
+import { VisitedDoctor } from "./visited-doctor";
 
 function ProfilePage() {
   const { userInfo } = useAtomValue(userState);
@@ -17,9 +17,9 @@ function ProfilePage() {
     <div className="flex-1 flex flex-col overflow-hidden">
       <div className="grid grid-cols-3 pt-4 pb-5">
         {[
-          ['Điểm thưởng', 14],
-          ['Phiếu giảm giá', 2],
-          ['Buổi khám', 3],
+          ["Điểm thưởng", 14],
+          ["Phiếu giảm giá", 2],
+          ["Buổi khám", 3],
         ].map(([key, value]) => (
           <div key={key} className="flex flex-col space-y-1.5 text-center">
             <div className="text-xl font-bold text-teal-500">{value}</div>
@@ -29,12 +29,12 @@ function ProfilePage() {
       </div>
       <div className="flex-1 flex flex-col rounded-t-3xl bg-white py-8 space-y-9 overflow-y-auto">
         <Section title="Dịch vụ y tế" viewMore>
-          <div className="grid grid-cols-4 px-3 pt-6 text-center text-[13px] text-neutral-900">
+          <div className="grid grid-cols-4 px-3 pt-6 text-center text-xs text-neutral-900">
             {[
-              { icon: prescription, label: 'Toa thuốc' },
-              { icon: calendar, label: 'Lịch hẹn' },
-              { icon: clipboard, label: 'Lịch sử' },
-              { icon: heart, label: 'Gia đình' },
+              { icon: prescription, label: "Toa thuốc" },
+              { icon: calendar, label: "Lịch hẹn" },
+              { icon: clipboard, label: "Lịch sử" },
+              { icon: heart, label: "Gia đình" },
             ].map(({ icon, label }) => (
               <div key={label} className="flex flex-col items-center gap-2">
                 <img src={icon} className="h-8 w-8" />

@@ -1,11 +1,11 @@
-import DoctorItem from '@/components/items/doctor';
-import PolarizedList from '@/components/polarized-list';
-import { scheduleByIdState } from '@/state';
-import { useAtomValue } from 'jotai';
-import { useNavigate, useParams } from 'react-router-dom';
-import NotFound from '../404';
-import { TestResult } from './test-result';
-import FabForm from '@/components/form/fab-form';
+import DoctorItem from "@/components/items/doctor";
+import PolarizedList from "@/components/polarized-list";
+import { scheduleByIdState } from "@/state";
+import { useAtomValue } from "jotai";
+import { useNavigate, useParams } from "react-router-dom";
+import NotFound from "../404";
+import { TestResult } from "./test-result";
+import FabForm from "@/components/form/fab-form";
 
 function ScheduleDetailPage() {
   const { id } = useParams();
@@ -19,35 +19,37 @@ function ScheduleDetailPage() {
   return (
     <FabForm
       fab={{
-        label: 'Tái khám',
+        label: "Tái khám",
         onClick() {
-          navigate('/booking');
+          navigate("/booking");
         },
       }}
     >
       <div className="flex w-full flex-col px-4 py-3 space-y-3">
         <div className="flex flex-col justify-center gap-3 rounded-xl bg-white p-4">
           <div className="flex items-center justify-center gap-[115px]">
-            <div className="text-[15px] font-medium leading-6 text-neutral-900">
+            <div className="text-base font-medium leading-6 text-neutral-900">
               Nội khoa tổng quát
             </div>
-            <div className="text-[13px] text-neutral-400">Hoàn thành</div>
+            <div className="text-xs text-neutral-400">Hoàn thành</div>
           </div>
           <hr className="border-t border-black/10" />
           <DoctorItem doctor={schedule.doctor} />
           <PolarizedList
             items={[
-              ['Họ tên', 'Băng Đôn Đôn'],
-              ['Khu vực', 'Bệnh viện Quốc tế Gia Hội Thượng Hải'],
-              ['Khoa', 'Khoa Da liễu'],
-              ['Thời gian khám bệnh', '16.02.2022 Thứ Tư 09:00-09:30'],
-              ['Loại khám bệnh', 'Ngoại trú Khám lần đầu'],
-              ['Phương thức thanh toán', 'Tự chi trả'],
+              ["Họ tên", "Băng Đôn Đôn"],
+              ["Khu vực", "Bệnh viện Quốc tế Gia Hội Thượng Hải"],
+              ["Khoa", "Khoa Da liễu"],
+              ["Thời gian khám bệnh", "16.02.2022 Thứ Tư 09:00-09:30"],
+              ["Loại khám bệnh", "Ngoại trú Khám lần đầu"],
+              ["Phương thức thanh toán", "Tự chi trả"],
             ]}
           />
         </div>
-        <div className="flex flex-col justify-center gap-4 rounded-xl bg-white p-4 text-[15px] leading-normal text-neutral-950">
-          <div className="font-medium leading-6 text-neutral-900">Chi tiết phiếu khám</div>
+        <div className="flex flex-col justify-center gap-4 rounded-xl bg-white p-4 text-base leading-normal text-neutral-950">
+          <div className="font-medium leading-6 text-neutral-900">
+            Chi tiết phiếu khám
+          </div>
           <TestResult
             testType="Xét ngiệm"
             testName="X-Quang"

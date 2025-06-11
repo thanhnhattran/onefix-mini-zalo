@@ -5,7 +5,7 @@ export function NewsItem() {
   return (
     <article className="flex w-full justify-between items-center gap-4 rounded-lg bg-white p-4">
       <div className="flex-1 space-y-2">
-        <h3 className="text-[13px] font-medium text-neutral-800">
+        <h3 className="text-xs font-medium text-neutral-800">
           Tiêu thụ đường vượt mức cho phép của tổ chức WHO
         </h3>
         <p className="text-xs text-neutral-400 line-clamp-1">

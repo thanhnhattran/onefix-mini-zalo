@@ -23,7 +23,7 @@ export default function RemoteDiagnosisItem({
           <div
             className={`flex flex-grow flex-col items-start gap-1.5 self-stretch [max-width:${maxWidth}]`}
           >
-            <div className="self-stretch text-[15px] font-medium text-neutral-800">
+            <div className="self-stretch text-base font-medium text-neutral-800">
               {title}
             </div>
             <div className="text-xs text-neutral-400">{subtitle}</div>

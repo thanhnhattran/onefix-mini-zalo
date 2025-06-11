@@ -1,36 +1,36 @@
-import HorizontalDivider from './horizontal-divider';
-import { useAtomValue } from 'jotai';
-import TransitionLink from './transition-link';
-import HomeIcon from './icons/home';
-import CategoryIcon from './icons/category';
-import ChatIcon from './icons/cart';
-import ProfileIcon from './icons/profile';
-import BigPlusIcon from './icons/big-plus';
-import { useRouteHandle } from '@/hooks';
+import HorizontalDivider from "./horizontal-divider";
+import { useAtomValue } from "jotai";
+import TransitionLink from "./transition-link";
+import HomeIcon from "./icons/home";
+import CategoryIcon from "./icons/category";
+import ChatIcon from "./icons/cart";
+import ProfileIcon from "./icons/profile";
+import BigPlusIcon from "./icons/big-plus";
+import { useRouteHandle } from "@/hooks";
 
 const NAV_ITEMS = [
   {
-    name: 'Trang chủ',
-    path: '/',
+    name: "Trang chủ",
+    path: "/",
     icon: HomeIcon,
   },
   {
-    name: 'Khám phá',
-    path: '/explore',
+    name: "Khám phá",
+    path: "/explore",
     icon: CategoryIcon,
   },
   {
-    path: '/booking',
+    path: "/booking",
     icon: () => <BigPlusIcon className="-mt-3" />,
   },
   {
-    name: 'Tư vấn',
-    path: '/chat',
+    name: "Tư vấn",
+    path: "/chat",
     icon: ChatIcon,
   },
   {
-    name: 'Cá nhân',
-    path: '/profile',
+    name: "Cá nhân",
+    path: "/profile",
     icon: ProfileIcon,
   },
 ];
@@ -51,7 +51,7 @@ export default function Footer() {
         viewBox="0 0 375 99"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ overflow: 'visible' }}
+        style={{ overflow: "visible" }}
       >
         <path
           fillRule="evenodd"
@@ -61,13 +61,13 @@ export default function Footer() {
         />
       </svg>
       <div
-        className="w-full px-4 pt-2 grid text-[11px] relative z-20"
+        className="w-full px-4 pt-2 grid text-3xs relative z-20"
         style={{
           gridTemplateColumns: `repeat(${NAV_ITEMS.length}, 1fr)`,
           paddingBottom: `max(16px, env(safe-area-inset-bottom))`,
         }}
       >
-        {NAV_ITEMS.map(item => {
+        {NAV_ITEMS.map((item) => {
           return (
             <TransitionLink
               to={item.path}
@@ -80,7 +80,9 @@ export default function Footer() {
                     <div className="w-6 h-6 flex justify-center items-center">
                       <item.icon active={isActive} />
                     </div>
-                    <div className={`text-2xs ${isActive ? 'text-primary' : 'text-[lightgray]'}`}>
+                    <div
+                      className={`text-2xs ${isActive ? "text-primary" : "text-disabled"}`}
+                    >
                       {item.name}
                     </div>
                   </>

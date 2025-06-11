@@ -9,5 +9,9 @@
   },
   "listCSS": [],
   "listSyncJS": [],
-  "listAsyncJS": []
+  "listAsyncJS": [],
+  "template": {
+    "name": "zaui-doctor",
+    "oaID": "4318657068771012646"
+  }
 }

@@ -1,7 +1,7 @@
-import { Button } from '@/components/button';
-import SearchIcon from '@/components/icons/search';
-import { HTMLProps } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Button } from "@/components/button";
+import SearchIcon from "@/components/icons/search";
+import { HTMLProps } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchBar({
   className,
@@ -11,23 +11,23 @@ export default function SearchBar({
   const navigate = useNavigate();
   return (
     <form
-      className={`flex items-center justify-between rounded-full bg-white relative p-1 space-x-1 ${className ?? ''}`}
-      onSubmit={e => {
+      className={`flex items-center justify-between rounded-full bg-white relative p-1 space-x-1 ${className ?? ""}`}
+      onSubmit={(e) => {
         e.preventDefault();
-        const keyword = new FormData(e.currentTarget).get('keyword') as string;
+        const keyword = new FormData(e.currentTarget).get("keyword") as string;
         navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
       }}
     >
       <input
         placeholder="Tìm bệnh, bác sĩ, thuốc..."
-        className="placeholder:text-neutral-400 text-sm pl-[30px] flex-1 rounded-full self-stretch"
+        className="placeholder:text-neutral-400 text-sm pl-8 flex-1 rounded-full self-stretch outline-none"
         required
         name="keyword"
         {...props}
       />
       <SearchIcon className="h-5 w-5 absolute left-2" />
       <Button
-        className="rounded-full h-9 w-auto px-4 text-center text-[13px] text-white"
+        className="rounded-full h-9 !w-auto px-4 text-center text-xs text-white"
         loading={loading}
       >
         Tìm
