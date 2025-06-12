@@ -16,7 +16,6 @@ export default function RemoteDiagnosis() {
           icon={<ShipIcon />}
           title="Giao thuốc"
           subtitle="Tận nhà"
-          maxWidth="73px"
         />
       </div>
     </Section>

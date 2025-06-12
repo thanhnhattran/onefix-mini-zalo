@@ -4,14 +4,12 @@ interface RemoteDiagnosisItemProps {
   icon: ReactNode;
   title: string;
   subtitle: string;
-  maxWidth?: string;
 }
 
 export default function RemoteDiagnosisItem({
   icon,
   title,
   subtitle,
-  maxWidth = "68px",
 }: RemoteDiagnosisItemProps) {
   return (
     <div className="flex flex-col justify-center rounded-lg bg-background p-3">

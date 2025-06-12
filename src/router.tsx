@@ -14,6 +14,7 @@ import InvoicesPage from "./pages/invoices";
 import AskPage from "./pages/ask";
 import FeedbackPage from "./pages/feedback";
 import SearchResultPage from "./pages/search";
+import { ErrorBoundary } from "./components/error-boundary";
 
 const router = createBrowserRouter(
   [
@@ -124,6 +125,7 @@ const router = createBrowserRouter(
           element: <NotFound />,
         },
       ],
+      ErrorBoundary,
     },
   ],
   { basename: getBasePath() }

@@ -1,5 +1,12 @@
 import { atom } from "jotai";
-import { atomFamily, atomWithReset, loadable } from "jotai/utils";
+import {
+  atomFamily,
+  atomWithDefault,
+  atomWithLazy,
+  atomWithRefresh,
+  atomWithReset,
+  loadable,
+} from "jotai/utils";
 import {
   AvailableTimeSlots,
   Department,
@@ -22,12 +29,17 @@ import {
 } from "./utils/mock";
 import { getUserInfo } from "zmp-sdk";
 import { toLowerCaseNonAccentVietnamese, wait } from "./utils/miscellaneous";
+import { NotifiableError } from "./utils/errors";
 
-export const userState = atom(() =>
-  getUserInfo({
+export const userState = atomWithRefresh(() => {
+  return getUserInfo({
     avatarType: "normal",
-  })
-);
+  }).catch(() => {
+    throw new NotifiableError(
+      "Vui lòng cho phép truy cập tên và ảnh đại diện!"
+    );
+  });
+});
 
 export const servicesState = atom(mockServices);
 

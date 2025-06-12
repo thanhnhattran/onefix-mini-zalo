@@ -1,14 +1,14 @@
-function FooterWave() {
+import { SVGProps } from "react";
+
+function FooterWave(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      className="absolute inset-x-0 bottom-0 z-10 h-24"
       width="100%"
-      height="100%"
       preserveAspectRatio="none"
       viewBox="0 0 375 99"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ overflow: "visible" }}
+      {...props}
     >
       <path
         fillRule="evenodd"

@@ -45,13 +45,12 @@ export default function Footer() {
   }
 
   return (
-    <div className="w-full relative">
-      <FooterWave />
+    <div className="w-full relative bg-white">
+      <FooterWave className="absolute inset-x-0 bottom-sb z-10 h-24 -mb-4" />
       <div
-        className="w-full px-4 pt-2 grid text-3xs relative z-20 justify-center"
+        className="w-full px-4 pt-2 grid text-3xs relative z-20 justify-center pb-sb"
         style={{
           gridTemplateColumns: `repeat(${NAV_ITEMS.length}, 1fr)`,
-          paddingBottom: `max(16px, env(safe-area-inset-bottom))`,
         }}
       >
         {NAV_ITEMS.map((item) => {
