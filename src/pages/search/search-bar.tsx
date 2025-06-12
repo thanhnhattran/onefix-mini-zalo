@@ -20,7 +20,7 @@ export default function SearchBar({
     >
       <input
         placeholder="Tìm bệnh, bác sĩ, thuốc..."
-        className="placeholder:text-neutral-400 text-sm pl-8 flex-1 rounded-full self-stretch outline-none"
+        className="placeholder:text-disabled text-sm pl-8 flex-1 rounded-full self-stretch outline-none"
         required
         name="keyword"
         {...props}

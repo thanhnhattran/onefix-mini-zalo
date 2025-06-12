@@ -10,7 +10,7 @@ function MarkedTitleSection({
   ...props
 }: MarkedTitleSectionProps) {
   return (
-    <div className="bg-white rounded-[10px] pt-4 pb-6 text-neutral-800 space-y-4">
+    <div className="bg-white rounded-lg pt-4 pb-6 space-y-4">
       <div className="flex items-center gap-2.5" {...props}>
         <div className="h-5 w-[5px]">
           <svg
@@ -25,7 +25,7 @@ function MarkedTitleSection({
               fillRule="evenodd"
               clipRule="evenodd"
               d="M0 0H3C4.10457 0 5 0.895431 5 2V19C5 20.1046 4.10457 21 3 21H0V0Z"
-              fill="#1DBD8F"
+              fill="var(--primary)"
             />
           </svg>
         </div>

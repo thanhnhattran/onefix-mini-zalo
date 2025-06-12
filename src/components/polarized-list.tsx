@@ -9,7 +9,7 @@ function PolarizedList(props: {
           .map(([key, value]) => (
             <div key={key} className="flex justify-between">
               <dt className="text-disabled">{key}</dt>
-              <dd className="text-right font-medium text-disabled">
+              <dd className="text-right font-medium">
                 {value.includes("\n") ? (
                   <span className="text-right">
                     {value.split("\n").map((line, i) => (

@@ -5,14 +5,14 @@ export function NewsItem() {
   return (
     <article className="flex w-full justify-between items-center gap-4 rounded-lg bg-white p-4">
       <div className="flex-1 space-y-2">
-        <h3 className="text-xs font-medium text-neutral-800">
+        <h3 className="text-xs font-medium">
           Tiêu thụ đường vượt mức cho phép của tổ chức WHO
         </h3>
-        <p className="text-xs text-neutral-400 line-clamp-1">
+        <p className="text-xs text-disabled line-clamp-1">
           Cục An toàn thực phẩm đề nghị Viện Dinh dưỡng quốc gia, Sở Y tế Đồng
           Nai kiểm tra
         </p>
-        <div className="flex justify-between text-xs text-neutral-400 pt-2">
+        <div className="flex justify-between text-xs text-disabled pt-2">
           <span>Sức khỏe</span>
           <span>20/05/2025</span>
         </div>

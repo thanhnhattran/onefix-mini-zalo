@@ -37,7 +37,7 @@ function TextareaWithImageUpload({
   };
 
   return (
-    <div className="flex flex-grow flex-col space-y-4 rounded-[10px] border border-black/10 px-3 py-4 text-sm text-disabled">
+    <div className="flex flex-grow flex-col space-y-4 rounded-lg border border-black/10 px-3 py-4 text-sm text-disabled">
       <Input.TextArea
         className="p-0"
         autoHeight
@@ -52,15 +52,15 @@ function TextareaWithImageUpload({
       <div className="flex items-center gap-3">
         <button
           type="button"
-          className="flex h-[60px] w-[60px] flex-col items-center justify-center rounded-lg bg-teal-500/10 p-[18px] cursor-pointer hover:bg-teal-500/20 transition-colors"
+          className="flex h-16 w-16 flex-col items-center justify-center rounded-lg bg-highlight p-4 cursor-pointer hover:bg-highlight transition-colors text-primary"
           onClick={handleImageUpload}
         >
           <PlusIcon />
         </button>
-        <p className="flex-1">
+        <div className="flex-1">
           Tải lên hình ảnh liên quan (phiếu kiểm tra, CT, hồ sơ bệnh án, vùng bị
           bệnh, thuốc men, v.v.)
-        </p>
+        </div>
       </div>
 
       {images.values.length > 0 && (

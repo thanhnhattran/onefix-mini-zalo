@@ -33,8 +33,8 @@ export default function HomeIcon({ active, ...props }: HomeIconProps) {
           y2="29.6963"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#00BEAD" />
-          <stop offset="1" stopColor="#00B4C4" />
+          <stop stopColor="var(--highlight)" />
+          <stop offset="1" stopColor="var(--primary)" />
         </linearGradient>
         <clipPath id="clip0_2019_7690">
           <rect

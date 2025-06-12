@@ -56,7 +56,8 @@ export const Button: FC<ButtonProps> = ({
   return (
     <button
       className={`
-        ${loading || disabled ? "bg-[#BFD9D6] cursor-not-allowed" : "bg-gradient-to-br from-[#00BEAD] to-[#00C4B4] shadow-[0px_8px_16px_0px_rgba(0,180,196,0.20)]"}
+        bg-gradient-to-br from-primary to-highlight
+        ${loading || disabled ? "grayscale cursor-not-allowed" : "shadow shadow-highlight"}
         ${className || ""}
         ${
           isVisible

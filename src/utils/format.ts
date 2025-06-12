@@ -21,6 +21,13 @@ export const formatDayName = (date: Date) => {
   return days[date.getDay()];
 };
 
+export const formatFullDate = (date: Date) => {
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${day}/${month}/${year}`;
+};
+
 export const formatShortDate = (date: Date) => {
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const day = date.getDate().toString().padStart(2, "0");

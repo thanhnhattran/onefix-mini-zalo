@@ -46,7 +46,7 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex items-center gap-[5px] px-4 overflow-x-auto">
+      <div className="flex items-center gap-1.5 px-4 overflow-x-auto">
         {slots.map(({ date }, index) => {
           const dayName = formatDayName(date);
           const shortDate = formatShortDate(date);
@@ -91,10 +91,8 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
               key={timeIndex}
               onClick={() => handleTimeSelect(time)}
               disabled={!time.isAvailable}
-              className={`flex items-center justify-center rounded-3xl p-[7.5px] text-center ${
-                isSelected
-                  ? "bg-primary text-white"
-                  : "bg-slate-50 text-neutral-700"
+              className={`flex items-center justify-center rounded-3xl p-2 text-center ${
+                isSelected ? "bg-primary text-white" : "bg-background"
               } ${!time.isAvailable ? "opacity-25 cursor-not-allowed" : ""}`}
             >
               {formattedTime}

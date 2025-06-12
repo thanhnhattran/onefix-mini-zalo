@@ -1,4 +1,4 @@
-import { createElement, FunctionComponent } from 'react';
+import { createElement, FunctionComponent } from "react";
 
 interface Tab {
   name: string;
@@ -22,19 +22,21 @@ function Tabs({ activeTab, onTabChange, tabs }: TabsProps) {
             onClick={() => onTabChange(index)}
           >
             <div
-              className={`truncate ${activeTab === index ? 'text-teal-500 font-medium' : 'text-neutral-400'}`}
+              className={`truncate ${activeTab === index ? "text-primary font-medium" : "text-disabled"}`}
             >
               {name}
             </div>
             {activeTab === index && (
               <div className="absolute bottom-[5.5px]">
-                <div className="h-[3px] w-8 bg-teal-500 rounded-full" />
+                <div className="h-[3px] w-8 bg-primary rounded-full" />
               </div>
             )}
           </div>
         ))}
       </div>
-      <div className="flex-1 overflow-y-auto">{createElement(tabs[activeTab].content)}</div>
+      <div className="flex-1 overflow-y-auto">
+        {createElement(tabs[activeTab].content)}
+      </div>
     </div>
   );
 }

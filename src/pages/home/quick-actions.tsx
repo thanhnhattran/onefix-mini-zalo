@@ -17,9 +17,9 @@ const QuickAction = ({ icon, title, subtitle, to }: QuickActionProps) => (
     className="flex items-center gap-2 rounded-xl bg-white p-3"
   >
     <img src={icon} className="h-11 w-11" />
-    <div className="flex flex-grow flex-col gap-1.5 self-stretch [max-width:90px]">
-      <div className="text-base font-medium text-neutral-800">{title}</div>
-      <div className="text-xs text-neutral-400">{subtitle}</div>
+    <div className="flex flex-grow flex-col gap-1.5 self-stretch">
+      <div className="text-base font-medium">{title}</div>
+      <div className="text-xs text-disabled">{subtitle}</div>
     </div>
   </TransitionLink>
 );

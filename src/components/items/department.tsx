@@ -23,10 +23,10 @@ function DepartmentItem({ item, className, ...props }: DepartmentItemProps) {
       }}
       {...props}
       type="button"
-      className={`flex flex-col gap-2 rounded-lg p-2.5 pr-[22px] ${className ?? ""}`}
+      className={`w-full flex flex-col gap-2 rounded-lg text-left p-2.5 ${className ?? ""}`}
     >
-      <div className="text-sm font-medium text-neutral-800">{item.name}</div>
-      <div className="text-xs text-neutral-400 w-full truncate">
+      <div className="text-sm font-medium">{item.name}</div>
+      <div className="text-xs text-disabled w-full truncate">
         {item.description}
       </div>
     </button>

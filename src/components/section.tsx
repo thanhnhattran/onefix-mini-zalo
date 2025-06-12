@@ -20,15 +20,13 @@ export default function Section({
 }: SectionProps) {
   const header = (title || viewMore) && (
     <div className="flex items-center justify-between flex-wrap gap-1">
-      {title && (
-        <div className="font-medium text-neutral-800 text-base">{title}</div>
-      )}
+      {title && <div className="font-medium text-base">{title}</div>}
       {viewMore && (
         <TransitionLink
           to={viewMore}
           className="flex items-center justify-center gap-1"
         >
-          <div className="text-xs text-neutral-400">Xem tất cả</div>
+          <div className="text-xs text-disabled">Xem tất cả</div>
           <ArrowRightIcon className="h-3 w-3" />
         </TransitionLink>
       )}

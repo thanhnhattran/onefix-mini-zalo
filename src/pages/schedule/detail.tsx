@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import NotFound from "../404";
 import { TestResult } from "./test-result";
 import FabForm from "@/components/form/fab-form";
+import { formatDayName, formatFullDate, formatTimeSlot } from "@/utils/format";
 
 function ScheduleDetailPage() {
   const { id } = useParams();
@@ -32,27 +33,28 @@ function ScheduleDetailPage() {
     >
       <div className="flex w-full flex-col px-4 py-3 space-y-3">
         <div className="flex flex-col justify-center gap-3 rounded-xl bg-white p-4">
-          <div className="flex items-center justify-center gap-[115px]">
-            <div className="text-base font-medium text-disabled">
-              Nội khoa tổng quát
-            </div>
-            <div className="text-xs text-neutral-400">Hoàn thành</div>
+          <div className="flex items-center justify-between">
+            <div className="text-base font-medium">Nội khoa tổng quát</div>
+            <div className="text-xs text-disabled">Hoàn thành</div>
           </div>
           <hr className="border-t border-black/10" />
           <DoctorItem doctor={schedule.doctor} />
           <PolarizedList
             items={[
-              ["Họ tên", "Băng Đôn Đôn"],
-              ["Khu vực", "Bệnh viện Quốc tế Gia Hội Thượng Hải"],
-              ["Khoa", "Khoa Da liễu"],
-              ["Thời gian khám bệnh", "16.02.2022 Thứ Tư 09:00-09:30"],
+              ["Họ tên", schedule.patientName],
+              ["Khu vực", schedule.department.name],
+              ["Khoa", schedule.department.name],
+              [
+                "Thời gian khám bệnh",
+                `${formatFullDate(schedule.schedule.date)} ${formatDayName(schedule.schedule.date)} ${formatTimeSlot(schedule.schedule.time)}`,
+              ],
               ["Loại khám bệnh", "Ngoại trú Khám lần đầu"],
               ["Phương thức thanh toán", "Tự chi trả"],
             ]}
           />
         </div>
-        <div className="flex flex-col justify-center gap-4 rounded-xl bg-white p-4 text-base text-neutral-950">
-          <div className="font-medium text-disabled">Chi tiết phiếu khám</div>
+        <div className="flex flex-col justify-center gap-4 rounded-xl bg-white p-4 text-base">
+          <div className="font-medium">Chi tiết phiếu khám</div>
           <TestResult
             testType="Xét ngiệm"
             testName="X-Quang"

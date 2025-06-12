@@ -22,14 +22,14 @@ function ProfilePage() {
           ["Buổi khám", 3],
         ].map(([key, value]) => (
           <div key={key} className="flex flex-col space-y-1.5 text-center">
-            <div className="text-xl font-bold text-teal-500">{value}</div>
+            <div className="text-xl font-bold text-primary">{value}</div>
             <div>{key}</div>
           </div>
         ))}
       </div>
       <div className="flex-1 flex flex-col rounded-t-3xl bg-white py-8 space-y-9 overflow-y-auto">
         <Section title="Dịch vụ y tế" viewMore="/services">
-          <div className="grid grid-cols-4 px-3 pt-6 text-center text-xs text-disabled">
+          <div className="grid grid-cols-4 px-3 pt-6 text-center text-xs">
             {[
               { icon: prescription, label: "Toa thuốc" },
               { icon: calendar, label: "Lịch hẹn" },

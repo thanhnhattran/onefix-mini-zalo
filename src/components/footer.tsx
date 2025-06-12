@@ -22,7 +22,9 @@ const NAV_ITEMS = [
   },
   {
     path: "/booking",
-    icon: () => <BigPlusIcon className="-mt-4" />,
+    icon: () => (
+      <BigPlusIcon className="-mt-4 shadow-lg shadow-highlight rounded-full" />
+    ),
   },
   {
     name: "Lịch khám",

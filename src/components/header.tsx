@@ -21,7 +21,7 @@ function ProfileHeader() {
         src={userInfo.avatar}
         className="rounded-full h-10 w-10 object-cover border border-white"
       />
-      <div className="w-40 font-medium text-disabled">{userInfo.name}</div>
+      <div className="w-40 font-medium">{userInfo.name}</div>
     </div>
   );
 }
@@ -54,13 +54,7 @@ export default function Header() {
       <div className="flex items-center min-h-12">
         {!handle?.back ? (
           <>
-            <div
-              className="fixed inset-0 h-[230px] z-0"
-              style={{
-                background:
-                  "linear-gradient(160deg, #8DE9F2 1.36%, #F2F9F9 61.49%)",
-              }}
-            />
+            <div className="fixed inset-0 h-[230px] z-0 bg-gradient-to-br from-highlight from-[1.36%] to-background to-[61.49%]" />
             <div className="relative z-10">
               {handle.profile ? (
                 <ProfileHeader />

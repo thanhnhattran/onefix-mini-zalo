@@ -25,18 +25,16 @@ export default function DoctorItem({
         <div className="h-14 w-14 flex-none">
           <img src={doctor.image} alt={doctor.name} />
         </div>
-        <div className="font-roboto flex flex-grow flex-col gap-1 text-xs text-neutral-400 overflow-hidden">
+        <div className="font-roboto flex flex-grow flex-col gap-1 text-xs overflow-hidden">
           <div className="flex items-center gap-1.5 truncate">
-            <div className="text-base font-medium text-disabled">
-              {doctor.name}
-            </div>
-            <div className="w-28">{doctor.title}</div>
+            <div className="text-base font-medium">{doctor.name}</div>
+            <div className="w-28 text-disabled">{doctor.title}</div>
           </div>
-          {withLanguages && <div>{doctor.languages}</div>}
-          <div className="pt-2">
-            <div className="flex items-center">
-              <p>{description ?? doctor.specialties}</p>
-            </div>
+          {withLanguages && (
+            <div className="text-disabled">{doctor.languages}</div>
+          )}
+          <div className="flex items-center text-disabled pt-1.5">
+            <p>{description ?? doctor.specialties}</p>
           </div>
         </div>
       </div>

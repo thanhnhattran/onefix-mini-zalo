@@ -16,7 +16,7 @@ function QuestionSentSuccessfully() {
     >
       <div className="h-full flex justify-center items-center flex-col gap-3 text-center px-7">
         <SuccessIcon />
-        <div className="self-stretch pt-2 text-lg font-medium text-disabled">
+        <div className="self-stretch pt-2 text-lg font-medium">
           Gửi thành công
         </div>
         <div className="flex items-center justify-center self-stretch text-sm text-disabled text-center">

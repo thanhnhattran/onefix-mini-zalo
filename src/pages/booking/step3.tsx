@@ -24,7 +24,7 @@ export default function Step3() {
       <div className="p-4 h-full flex items-center">
         <div className="flex w-full flex-col items-center gap-4 rounded-2xl bg-white px-4 py-8">
           <SuccessIcon />
-          <div className="self-stretch text-center text-lg font-medium text-disabled">
+          <div className="self-stretch text-center text-lg font-medium">
             Đặt lịch thành công
           </div>
           <DashedDivider />

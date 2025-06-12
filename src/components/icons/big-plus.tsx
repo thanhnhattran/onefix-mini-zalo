@@ -1,9 +1,6 @@
 import { SVGProps } from "react";
 
-function BigPlusIcon({
-  color,
-  ...props
-}: { color?: string } & SVGProps<SVGSVGElement>) {
+function BigPlusIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="50"
@@ -21,7 +18,7 @@ function BigPlusIcon({
       />
       <path
         d="M23 13C24.1046 13 25 13.8954 25 15V21H31C32.1046 21 33 21.8954 33 23C33 24.1046 32.1046 25 31 25H25V31C25 32.1046 24.1046 33 23 33C21.8954 33 21 32.1046 21 31V25H15C13.8954 25 13 24.1046 13 23C13 21.8954 13.8954 21 15 21H21V15C21 13.8954 21.8954 13 23 13Z"
-        fill={color ?? "url(#paint1_linear_9311_953)"}
+        fill="url(#paint1_linear_9311_953)"
       />
       <defs>
         <linearGradient
@@ -32,8 +29,8 @@ function BigPlusIcon({
           y2="-6.64999"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#00BEAD" />
-          <stop offset="1" stopColor="#00B4C4" />
+          <stop stopColor="var(--primary)" />
+          <stop offset="1" stopColor="var(--highlight)" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_9311_953"
