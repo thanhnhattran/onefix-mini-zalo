@@ -30,8 +30,7 @@ export default function FeaturedServices() {
                 <ArrowRightIcon width={10} height={10} color="white" />
               </button>
             }
-            background="linear-gradient(132deg, #F3F9FF 1.29%, #E2EEFF 96.9%)"
-            color="#286BAB"
+            className="bg-[linear-gradient(132deg,_#F3F9FF_1.29%,_#E2EEFF_96.9%)] [&>.title]:text-[#286BAB] [&>.image]:w-[100px]"
             image={giamCan}
           />
         </div>
@@ -40,16 +39,14 @@ export default function FeaturedServices() {
             title="Xóa cận"
             to="/service/2"
             subtitle="Nhãn khoa"
-            color="#0F777D"
-            background="linear-gradient(145deg, #BBFCFE 1.2%, #8CF5F9 95.96%)"
+            className="bg-[linear-gradient(145deg,_#BBFCFE_1.2%,_#8CF5F9_95.96%)] [&>.title]:text-[#0F777D]"
             image={xoaCan}
           />
           <ServiceHighlight
             title="Trị nám"
             to="/service/3"
             subtitle="Da liễu"
-            color="#D9861C"
-            background="linear-gradient(145deg, #FFE2B0 1.2%, #FFF9E7 95.96%)"
+            className="bg-[linear-gradient(147deg,_#FFF9E8_3.11%,_#FAEECC_95.24%)] [&>.title]:text-[#D9861C]"
             image={triNam}
           />
         </div>

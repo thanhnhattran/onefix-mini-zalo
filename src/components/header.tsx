@@ -1,17 +1,11 @@
 import { useAtomValue } from "jotai";
-import {
-  To,
-  UIMatch,
-  useLocation,
-  useMatches,
-  useNavigate,
-} from "react-router-dom";
+import { To, useLocation, useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import { useRouteHandle } from "@/hooks";
 import { BackIcon } from "./icons/back";
-import headerIllus from "@/static/header-illus.svg";
 import { servicesState, userState } from "@/state";
 import { getConfig } from "@/utils/miscellaneous";
+import HeaderShieldIcon from "./icons/header-shield";
 
 function ProfileHeader() {
   const { userInfo } = useAtomValue(userState);
@@ -46,16 +40,12 @@ export default function Header() {
   const showBack = location.key !== "default" && handle?.back !== false;
 
   return (
-    <header
-      className="flex-none w-full bg-white min-h-12 pr-[90px] px-4 pt-st pb-2 space-x-2 bg-no-repeat bg-right-top"
-      style={{
-        backgroundImage: `url(${headerIllus})`,
-      }}
-    >
+    <header className="flex-none w-full bg-white min-h-12 pr-[90px] px-4 pt-st pb-2 space-x-2 bg-no-repeat bg-right-top">
       <div className="flex items-center min-h-12">
         {!handle?.back ? (
           <>
             <div className="fixed inset-0 h-[230px] z-0 bg-gradient-to-br from-highlight from-[1.36%] to-background to-[61.49%]" />
+            <HeaderShieldIcon className="fixed top-0 right-0" />
             <div className="relative z-10">
               {handle.profile ? (
                 <ProfileHeader />

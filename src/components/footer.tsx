@@ -2,7 +2,7 @@ import HorizontalDivider from "./horizontal-divider";
 import { useAtomValue } from "jotai";
 import TransitionLink from "./transition-link";
 import HomeIcon from "./icons/home";
-import CategoryIcon from "./icons/category";
+import ExploreIcon from "./icons/explore";
 import ChatIcon from "./icons/cart";
 import ProfileIcon from "./icons/profile";
 import BigPlusIcon from "./icons/big-plus";
@@ -18,7 +18,7 @@ const NAV_ITEMS = [
   {
     name: "Khám phá",
     path: "/explore",
-    icon: CategoryIcon,
+    icon: ExploreIcon,
   },
   {
     path: "/booking",
@@ -58,7 +58,7 @@ export default function Footer() {
             <TransitionLink
               to={item.path}
               key={item.path}
-              className="flex flex-col items-center space-y-0.5 p-1 pb-2.5 cursor-pointer active:scale-105"
+              className="flex flex-col items-center space-y-0.5 p-1 pb-2.5 active:scale-105"
             >
               {({ isActive }) =>
                 item.name ? (

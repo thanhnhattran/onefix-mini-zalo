@@ -72,7 +72,7 @@ export const Button: FC<ButtonProps> = ({
         <div className={`${loading ? "opacity-0" : ""}`}>{children}</div>
         {loading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            <div className="spinner w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
           </div>
         )}
       </div>

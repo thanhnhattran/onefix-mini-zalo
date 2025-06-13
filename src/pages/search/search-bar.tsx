@@ -29,7 +29,7 @@ export default function SearchBar({
       />
       <SearchIcon className="h-5 w-5 absolute left-2" />
       <Button
-        className="rounded-full h-9 !w-auto px-4 text-center text-xs text-white"
+        className="rounded-full w-auto h-[26px] [&_.spinner]:w-4 [&_.spinner]:h-4 px-4 text-center text-xs text-white"
         loading={loading}
       >
         Tìm
