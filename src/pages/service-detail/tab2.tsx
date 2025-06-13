@@ -1,6 +1,6 @@
 import DoctorSelector from "@/components/form/doctor-selector";
 import FabForm from "@/components/form/fab-form";
-import { bookingFormState, serviceState } from "@/state";
+import { bookingFormState, serviceByIdState } from "@/state";
 import { Doctor } from "@/types";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import NotFound from "../404";
 
 export default function Tab2() {
   const { id } = useParams();
-  const service = useAtomValue(serviceState(Number(id)));
+  const service = useAtomValue(serviceByIdState(Number(id)));
   const [selectedDoctor, setSelectedDoctor] = useState<Doctor>();
   const [query] = useSearchParams();
   const navigate = useNavigate();
@@ -29,7 +29,9 @@ export default function Tab2() {
             department: service.department,
             doctor: selectedDoctor,
           }));
-          navigate("/booking");
+          navigate("/booking", {
+            viewTransition: true,
+          });
         },
       }}
     >

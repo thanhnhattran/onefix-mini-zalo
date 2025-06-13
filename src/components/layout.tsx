@@ -1,8 +1,9 @@
-import Header from './header';
-import Footer from './footer';
-import { Toaster } from 'react-hot-toast';
-import { ScrollRestoration } from './scroll-restoration';
-import Page from './page';
+import Header from "./header";
+import Footer from "./footer";
+import { Toaster } from "react-hot-toast";
+import { ScrollRestoration } from "./scroll-restoration";
+import Page from "./page";
+import { Suspense } from "react";
 
 export default function Layout() {
   return (

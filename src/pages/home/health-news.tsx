@@ -1,9 +1,13 @@
 import Section from "@/components/section";
+import TransitionLink from "@/components/transition-link";
 import newsThumbnail from "@/static/news.png";
 
 export function NewsItem() {
   return (
-    <article className="flex w-full justify-between items-center gap-4 rounded-lg bg-white p-4">
+    <TransitionLink
+      to="/booking"
+      className="flex w-full justify-between items-center gap-4 rounded-lg bg-white p-4"
+    >
       <div className="flex-1 space-y-2">
         <h3 className="text-xs font-medium">
           Tiêu thụ đường vượt mức cho phép của tổ chức WHO
@@ -18,7 +22,7 @@ export function NewsItem() {
         </div>
       </div>
       <img src={newsThumbnail} className="h-20 w-20" alt="News thumbnail" />
-    </article>
+    </TransitionLink>
   );
 }
 

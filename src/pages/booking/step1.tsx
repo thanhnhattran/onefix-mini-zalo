@@ -35,7 +35,9 @@ export default function Step1() {
         children: "Tiếp tục",
         disabled: !formData.slot || !formData.department || !formData.doctor,
         onClick: () => {
-          navigate("/booking/2");
+          navigate("/booking/2", {
+            viewTransition: true,
+          });
         },
         onDisabledClick() {
           toast.error("Vui lòng điền đầy đủ thông tin!");

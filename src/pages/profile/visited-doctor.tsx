@@ -19,7 +19,9 @@ export function VisitedDoctor({ doctor }: VisitedDoctorProps) {
           ...prev,
           doctor,
         }));
-        navigate("/booking");
+        navigate("/booking", {
+          viewTransition: true,
+        });
       }}
     >
       <img src={doctor.image} className="w-10 h-10 rounded-full object-cover" />

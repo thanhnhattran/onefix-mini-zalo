@@ -17,7 +17,9 @@ export default function Step3() {
       fab={{
         children: "Xem lịch hẹn của tôi",
         onClick: () => {
-          navigate("/schedule");
+          navigate("/schedule", {
+            viewTransition: true,
+          });
         },
       }}
     >

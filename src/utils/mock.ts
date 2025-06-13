@@ -23,7 +23,22 @@ import exploreRoom from "@/static/explore/explore-room.png";
 import exploreDishes from "@/static/explore/explore-dishes.png";
 import exploreOmega3 from "@/static/explore/explore-omega-3.png";
 
-export function mock7DaysTimeSlots(): AvailableTimeSlots[] {
+export async function mockSymptoms() {
+  return [
+    "Đau đầu",
+    "Choáng váng",
+    "Sốt cao",
+    "Ho khan",
+    "Khó thở",
+    "Đau họng",
+    "Mệt mỏi",
+    "Chán ăn",
+    "Buồn nôn",
+    "Tiêu chảy",
+  ];
+}
+
+export async function mock7DaysTimeSlots() {
   const START_HOUR = 8;
   const END_HOUR = 21;
 
@@ -69,7 +84,7 @@ export function mock7DaysTimeSlots(): AvailableTimeSlots[] {
   return slots;
 }
 
-export function mockDoctors(): Doctor[] {
+export async function mockDoctors() {
   return [
     {
       id: 1,
@@ -137,8 +152,8 @@ export function mockDoctors(): Doctor[] {
   ];
 }
 
-export function mockServices(): Service[] {
-  const [d1, d2] = mockDepartments();
+export async function mockServices() {
+  const [d1, d2] = await mockDepartments();
   const genDesc = (imageUrl) =>
     `<div class="font-roboto flex w-full flex-col gap-4 px-4 pt-4 text-sm "><div class="flex items-start text-base font-medium"><p>Khoa nội khoa tổng quát đã được chứng nhận chất lượng bởi tổ chức gia đình bác sĩ thế giới WONCA</p></div><div class="flex items-start"><p>Bệnh nội khoa, tổng quát bao gồm rất nhiều bệnh lý thuộc các chuyên ngành y khác nhau, chủ yếu được điều trị bằng thuốc kết hợp các thủ thuật nhỏ (nếu có) và thay đổi lối sống, chế độ dinh dưỡng, nghỉ ngơi, vận động khoa học.</p></div><img class="rounded-lg" src="${imageUrl}" /><div class="h-56"><span><p class="mb-1.5">Khám nội tổng quát (hay khám nội khoa) hay khám sức khỏe nội tổng quát là cách hiệu quả để mỗi người chủ động phát hiện bệnh kịp thời và điều trị bệnh từ sớm. Quy trình thăm khám nội tổng quát thường bao gồm:</p><div class="mb-1.5 h-5"></div><p class="mb-1.5">Kiểm tra cơ bản: Bao gồm việc kiểm tra cân nặng, chiều cao, đo huyết áp… Các thông số này có thể cung cấp những thông tin quan trọng về tình trạng sức khỏe cơ bản của cơ thể.</p><p class="mb-1.5">Khám lâm sàng (nội hô hấp, tiêu hóa, nội tiết, thần kinh, cơ xương khớp, tai mũi họng, răng hàm mặt…): Thông qua việc khám lâm sàng, bác sĩ có thể đánh giá ban đầu tình trạng sức khỏe, bệnh lý của người bệnh..</p><p class="mb-1.5">Xét nghiệm, chụp chiếu: Sau khám lâm sàng, bác sĩ có thể chỉ định người bệnh thực hiện các cận lâm sàng chuyên sâu như xét nghiệm máu, xét nghiệm nước tiểu, siêu âm bụng, siêu âm tim, siêu âm tổng quát, chụp X-quang, chụp CT, chụp MRI, siêu âm… để tầm soát, đánh giá, phát hiện các bệnh lý liên quan, kể cả ung thư.</p><p>Lưu ý, quy trình ở trên chỉ mang tính tham khảo. Tùy mỗi bệnh lý hay tùy tại mỗi cơ sở y tế, danh mục khám nội tổng quát, quy trình sẽ được xây dựng khác nhau và còn thay đổi.</p></span></div></div>`;
 
@@ -170,9 +185,9 @@ export function mockServices(): Service[] {
   ];
 }
 
-export function mockBookings(): Booking[] {
-  const [d1, d2, d3] = mockDoctors();
-  const [de1, de2, de3] = mockDepartments();
+export async function mockBookings() {
+  const [d1, d2, d3] = await mockDoctors();
+  const [de1, de2, de3] = await mockDepartments();
   return [
     {
       id: 1,
@@ -219,8 +234,8 @@ export function mockBookings(): Booking[] {
   ];
 }
 
-export function mockInvoices(): Invoice[] {
-  const [b1, b2] = mockBookings();
+export async function mockInvoices() {
+  const [b1, b2] = await mockBookings();
   return [
     {
       id: 1,
@@ -233,7 +248,7 @@ export function mockInvoices(): Invoice[] {
   ];
 }
 
-export function mockDepartmentGroups(): DepartmentGroup[] {
+export async function mockDepartmentGroups() {
   const groups = [
     "Nội khoa",
     "Ngoại khoa",
@@ -254,8 +269,8 @@ export function mockDepartmentGroups(): DepartmentGroup[] {
   }));
 }
 
-export function mockDepartments(): Department[] {
-  const groups = mockDepartmentGroups();
+export async function mockDepartments() {
+  const groups = await mockDepartmentGroups();
   let id = 0;
 
   return groups.reduce(
@@ -272,7 +287,7 @@ export function mockDepartments(): Department[] {
   );
 }
 
-export function mockArticles(): Article[] {
+export async function mockArticles() {
   return [
     {
       id: 1,
@@ -318,4 +333,8 @@ export function mockArticles(): Article[] {
       image: exploreOmega3,
     },
   ];
+}
+
+export async function mockFeedbackCategories() {
+  return ["Tình trạng hoạt động", "Thái độ nhân viên", "Khác"];
 }

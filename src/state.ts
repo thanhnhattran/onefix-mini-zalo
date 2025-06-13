@@ -8,11 +8,15 @@ import {
   loadable,
 } from "jotai/utils";
 import {
+  Article,
   AvailableTimeSlots,
+  Booking,
   Department,
+  DepartmentGroup,
   Doctor,
   Feedback,
   Inquiry,
+  Invoice,
   Service,
   SymptomDescription,
   TimeSlot,
@@ -26,97 +30,65 @@ import {
   mockArticles,
   mockDepartments,
   mockDepartmentGroups,
+  mockSymptoms,
+  mockFeedbackCategories,
 } from "./utils/mock";
 import { getUserInfo } from "zmp-sdk";
 import { toLowerCaseNonAccentVietnamese, wait } from "./utils/miscellaneous";
 import { NotifiableError } from "./utils/errors";
 
-export const userState = atomWithRefresh(() => {
-  return getUserInfo({
-    avatarType: "normal",
-  }).catch(() => {
-    throw new NotifiableError(
-      "Vui lòng cho phép truy cập tên và ảnh đại diện!"
-    );
-  });
-});
+/**
+ * Listings
+ */
+export const servicesState = atom<Promise<Service[]>>(mockServices);
 
-export const servicesState = atom(mockServices);
+export const doctorsState = atom<Promise<Doctor[]>>(mockDoctors);
 
-export const serviceState = atomFamily((id: number) =>
+export const availableTimeSlotsState =
+  atom<Promise<AvailableTimeSlots[]>>(mock7DaysTimeSlots);
+
+export const articlesState = atom<Promise<Article[]>>(mockArticles);
+
+export const departmentGroupsState =
+  atom<Promise<DepartmentGroup[]>>(mockDepartmentGroups);
+
+export const departmentsState = atom<Promise<Department[]>>(mockDepartments);
+
+export const schedulesState = atom<Promise<Booking[]>>(mockBookings);
+
+export const invoicesState = atom<Promise<Invoice[]>>(mockInvoices);
+
+export const symptomsState = atom<Promise<string[]>>(mockSymptoms);
+
+export const feedbackCategoriesState = atom<Promise<string[]>>(
+  mockFeedbackCategories
+);
+
+/**
+ * Details
+ */
+export const serviceByIdState = atomFamily((id: number) =>
   atom(async (get) => {
     const services = await get(servicesState);
     return services.find((service) => service.id === id);
   })
 );
 
-export const symptomFormState = atomFamily((serviceId: string) =>
-  atomWithReset<SymptomDescription>({
-    symptoms: [],
-    description: "",
-    images: [],
+export const scheduleByIdState = atomFamily((id: number) =>
+  atom(async (get) => {
+    const schedules = await get(schedulesState);
+    return schedules.find((s) => s.id === id);
   })
 );
 
-export const askFormState = atomWithReset<Inquiry>({
-  symptoms: [],
-  description: "",
-  images: [],
-});
-
-export const feedbackFormState = atomWithReset<Feedback>({
-  title: "",
-  description: "",
-  images: [],
-  category: "",
-});
-
-export const symptomsState = atom(() => [
-  "Đau đầu",
-  "Choáng váng",
-  "Sốt cao",
-  "Ho khan",
-  "Khó thở",
-  "Đau họng",
-  "Mệt mỏi",
-  "Chán ăn",
-  "Buồn nôn",
-  "Tiêu chảy",
-]);
-
-export const feedbackCategoriesState = atom(() => [
-  "Tình trạng hoạt động",
-  "Thái độ nhân viên",
-  "Khác",
-]);
-
-export const availableTimeSlotsState =
-  atom<AvailableTimeSlots[]>(mock7DaysTimeSlots);
-
-export const articlesState = atom(mockArticles);
-
-export const doctorsState = atom(mockDoctors);
-
-export const bookingFormState = atomWithReset<{
-  slot?: TimeSlot;
-  doctor?: Doctor;
-  department?: Department;
-  symptoms: string[];
-  description: string;
-  images: string[];
-}>({
-  symptoms: [],
-  description: "",
-  images: [] as string[],
-});
-
-export const departmentGroupsState = atom(mockDepartmentGroups);
-
-export const departmentsState = atom(mockDepartments);
-
-export const departmentHierarchyState = atom((get) => {
-  const groups = get(departmentGroupsState);
-  const deps = get(departmentsState);
+/**
+ * Heavily computed values
+ */
+export const departmentHierarchyState = atom(async (get) => {
+  const [groups, deps] = await Promise.all([
+    get(departmentGroupsState),
+    get(departmentsState),
+  ]);
 
   return groups.map((group) => ({
     ...group,
@@ -124,24 +96,15 @@ export const departmentHierarchyState = atom((get) => {
   }));
 });
 
-export const schedulesState = atom(mockBookings);
-
-export const scheduleByIdState = atomFamily((id: number) =>
-  atom((get) => {
-    const schedules = get(schedulesState);
-    return schedules.find((s) => s.id === id);
-  })
-);
-
-export const invoicesState = atom(mockInvoices);
-
 export const searchResultState = atomFamily((keyword: string) =>
   loadable(
     atom(async (get) => {
       await wait(1500);
-      const doctors = get(doctorsState);
-      const departments = get(departmentsState);
-      const news = get(articlesState);
+      const [doctors, departments, news] = await Promise.all([
+        get(doctorsState),
+        get(departmentsState),
+        get(articlesState),
+      ]);
       const normalizedKeyword = toLowerCaseNonAccentVietnamese(keyword);
       return {
         doctors: doctors.filter(
@@ -169,3 +132,50 @@ export const searchResultState = atomFamily((keyword: string) =>
     })
   )
 );
+
+export const userState = atomWithRefresh(() => {
+  return getUserInfo({
+    avatarType: "normal",
+  }).catch(() => {
+    throw new NotifiableError(
+      "Vui lòng cho phép truy cập tên và ảnh đại diện!"
+    );
+  });
+});
+
+/**
+ * Forms
+ */
+export const symptomFormState = atomFamily((serviceId: string) =>
+  atomWithReset<SymptomDescription>({
+    symptoms: [],
+    description: "",
+    images: [],
+  })
+);
+
+export const bookingFormState = atomWithReset<{
+  slot?: TimeSlot;
+  doctor?: Doctor;
+  department?: Department;
+  symptoms: string[];
+  description: string;
+  images: string[];
+}>({
+  symptoms: [],
+  description: "",
+  images: [] as string[],
+});
+
+export const askFormState = atomWithReset<Inquiry>({
+  symptoms: [],
+  description: "",
+  images: [],
+});
+
+export const feedbackFormState = atomWithReset<Feedback>({
+  title: "",
+  description: "",
+  images: [],
+  category: "",
+});

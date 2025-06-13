@@ -10,7 +10,9 @@ function QuestionSentSuccessfully() {
       fab={{
         children: "Về trang chủ",
         onClick() {
-          navigate("/");
+          navigate("/", {
+            viewTransition: true,
+          });
         },
       }}
     >

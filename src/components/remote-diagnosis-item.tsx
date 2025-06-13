@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import TransitionLink from "./transition-link";
 
 interface RemoteDiagnosisItemProps {
   icon: ReactNode;
@@ -12,7 +13,10 @@ export default function RemoteDiagnosisItem({
   subtitle,
 }: RemoteDiagnosisItemProps) {
   return (
-    <div className="flex flex-col justify-center rounded-lg bg-background p-3">
+    <TransitionLink
+      to="/booking"
+      className="flex flex-col justify-center rounded-lg bg-background p-3"
+    >
       <div className="flex items-center pr-3">
         <div className="flex items-center justify-center gap-2">
           <div className="h-10 w-10">{icon}</div>
@@ -22,6 +26,6 @@ export default function RemoteDiagnosisItem({
           </div>
         </div>
       </div>
-    </div>
+    </TransitionLink>
   );
 }

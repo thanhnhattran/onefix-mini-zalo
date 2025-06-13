@@ -27,7 +27,9 @@ function ScheduleDetailPage() {
             ...prev,
             ...schedule,
           }));
-          navigate("/booking");
+          navigate("/booking", {
+            viewTransition: true,
+          });
         },
       }}
     >

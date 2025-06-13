@@ -15,7 +15,9 @@ export default function SearchBar({
       onSubmit={(e) => {
         e.preventDefault();
         const keyword = new FormData(e.currentTarget).get("keyword") as string;
-        navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
+        navigate(`/search?keyword=${encodeURIComponent(keyword)}`, {
+          viewTransition: true,
+        });
       }}
     >
       <input

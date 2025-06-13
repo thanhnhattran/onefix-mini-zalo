@@ -1,8 +1,12 @@
 import { Article } from "@/types";
+import TransitionLink from "../transition-link";
 
 export function ArticleItem({ title, category, timeAgo, image }: Article) {
   return (
-    <div className="flex flex-grow items-center justify-center space-x-6">
+    <TransitionLink
+      to="/booking"
+      className="flex flex-grow items-center justify-center space-x-6"
+    >
       <div className="font-roboto flex flex-grow flex-col items-start gap-3">
         <div className="line-clamp-2 flex items-start self-stretch overflow-ellipsis text-sm font-medium">
           {title}
@@ -21,6 +25,6 @@ export function ArticleItem({ title, category, timeAgo, image }: Article) {
           alt={title}
         />
       </div>
-    </div>
+    </TransitionLink>
   );
 }

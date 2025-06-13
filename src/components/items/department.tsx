@@ -19,7 +19,9 @@ function DepartmentItem({ item, className, ...props }: DepartmentItemProps) {
           ...prev,
           department: item,
         }));
-        navigate("/booking");
+        navigate("/booking", {
+          viewTransition: true,
+        });
       }}
       {...props}
       type="button"

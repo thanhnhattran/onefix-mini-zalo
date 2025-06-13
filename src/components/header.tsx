@@ -1,5 +1,6 @@
 import { useAtomValue } from "jotai";
 import {
+  To,
   UIMatch,
   useLocation,
   useMatches,
@@ -74,7 +75,11 @@ export default function Header() {
             {showBack && (
               <div
                 className="py-1 px-2 cursor-pointer"
-                onClick={() => navigate(-1)}
+                onClick={() =>
+                  navigate(-1 as To, {
+                    viewTransition: true,
+                  })
+                }
               >
                 <BackIcon />
               </div>
