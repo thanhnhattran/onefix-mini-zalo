@@ -22,11 +22,11 @@ export default function ServiceItem({
   ...props
 }: ServiceItemProps & (Link | CTA)) {
   const children = (
-    <div className={`flex flex-col items-center gap-1 ${className}`}>
-      <div className="h-9 w-9 text-center">
+    <div className={`flex flex-col items-center space-y-2 ${className}`}>
+      <div className="h-8 w-8 flex items-center justify-center">
         <img src={icon} alt={label} />
       </div>
-      <div className="text-center w-full truncate">{label}</div>
+      <div className="text-2xs text-center w-full truncate">{label}</div>
     </div>
   );
   if ("to" in props) {

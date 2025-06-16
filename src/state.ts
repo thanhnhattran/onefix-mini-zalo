@@ -74,6 +74,13 @@ export const serviceByIdState = atomFamily((id: number) =>
   })
 );
 
+export const departmentByIdState = atomFamily((id: number) =>
+  atom(async (get) => {
+    const departments = await get(departmentsState);
+    return departments.find((dep) => dep.id === id);
+  })
+);
+
 export const scheduleByIdState = atomFamily((id: number) =>
   atom(async (get) => {
     const schedules = await get(schedulesState);
@@ -146,13 +153,11 @@ export const userState = atomWithRefresh(() => {
 /**
  * Forms
  */
-export const symptomFormState = atomFamily((serviceId: string) =>
-  atomWithReset<SymptomDescription>({
-    symptoms: [],
-    description: "",
-    images: [],
-  })
-);
+export const symptomFormState = atomWithReset<SymptomDescription>({
+  symptoms: [],
+  description: "",
+  images: [],
+});
 
 export const bookingFormState = atomWithReset<{
   slot?: TimeSlot;
@@ -179,3 +184,8 @@ export const feedbackFormState = atomWithReset<Feedback>({
   images: [],
   category: "",
 });
+
+/**
+ * Miscellaenous
+ */
+export const customTitleState = atom("");

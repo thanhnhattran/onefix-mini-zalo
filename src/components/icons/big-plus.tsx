@@ -29,7 +29,7 @@ function BigPlusIcon(props: SVGProps<SVGSVGElement>) {
           y2="-6.64999"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="var(--highlight)" />
+          <stop stopColor="var(--primary-gradient)" />
           <stop offset="1" stopColor="var(--primary)" />
         </linearGradient>
         <linearGradient

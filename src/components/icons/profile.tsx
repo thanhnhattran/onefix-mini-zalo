@@ -39,7 +39,7 @@ export default function ProfileIcon({ active, ...props }: ProfileIconProps) {
           y2="29.6963"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="var(--highlight)" />
+          <stop stopColor="var(--primary-gradient)" />
           <stop offset="1" stopColor="var(--primary)" />
         </linearGradient>
         <clipPath id="clip0_2019_7718">

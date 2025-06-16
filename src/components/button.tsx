@@ -56,7 +56,7 @@ export const Button: FC<ButtonProps> = ({
   return (
     <button
       className={`
-        bg-gradient-to-br from-primary to-highlight
+        bg-gradient-to-br from-primary to-primary-gradient
         ${loading || disabled ? "grayscale cursor-not-allowed" : "shadow shadow-highlight"}
         ${className || ""}
         ${

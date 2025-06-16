@@ -4,7 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 import ServicesPage from "./pages/services";
 import CategoriesPage from "./pages/categories";
 import ExplorePage from "./pages/explore";
-import ServiceDetailPage from "./pages/service-detail";
+import ServiceDetailPage from "./pages/detail/service";
 import NotFound from "./pages/404";
 import BookingPage from "./pages/booking";
 import ScheduleHistoryPage from "./pages/schedule/history";
@@ -15,6 +15,7 @@ import AskPage from "./pages/ask";
 import FeedbackPage from "./pages/feedback";
 import SearchResultPage from "./pages/search";
 import { ErrorBoundary } from "./components/error-boundary";
+import DepartmentDetailPage from "./pages/detail/department";
 
 const router = createBrowserRouter(
   [
@@ -61,8 +62,18 @@ const router = createBrowserRouter(
           element: <ServiceDetailPage />,
           handle: {
             back: true,
-            title: ({ services, params }) =>
-              services.find((c) => String(c.id) === params.id)?.name,
+            title: "custom",
+          },
+        },
+        {
+          /**
+           * Accepted params like above
+           */
+          path: "/department/:id",
+          element: <DepartmentDetailPage />,
+          handle: {
+            back: true,
+            title: "custom",
           },
         },
         {

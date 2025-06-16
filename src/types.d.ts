@@ -74,6 +74,7 @@ export interface DepartmentGroup {
 export interface Department {
   id: number;
   name: string;
+  shortDescription: string;
   description: string;
   groupId: number;
 }

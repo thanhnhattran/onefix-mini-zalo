@@ -1,4 +1,4 @@
-import { createElement, FunctionComponent } from "react";
+import { createElement, FunctionComponent, Suspense } from "react";
 
 interface Tab {
   name: string;
@@ -35,7 +35,7 @@ function Tabs({ activeTab, onTabChange, tabs }: TabsProps) {
         ))}
       </div>
       <div className="flex-1 overflow-y-auto">
-        {createElement(tabs[activeTab].content)}
+        <Suspense>{createElement(tabs[activeTab].content)}</Suspense>
       </div>
     </div>
   );

@@ -39,7 +39,7 @@ export default function ExploreIcon({ active, ...props }: CategoryIconProps) {
           y2="28.8027"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="var(--highlight)" />
+          <stop stopColor="var(--primary-gradient)" />
           <stop offset="1" stopColor="var(--primary)" />
         </linearGradient>
         <linearGradient
@@ -50,7 +50,7 @@ export default function ExploreIcon({ active, ...props }: CategoryIconProps) {
           y2="26.9689"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="var(--highlight)" />
+          <stop stopColor="var(--primary-gradient)" />
           <stop offset="1" stopColor="var(--primary)" />
         </linearGradient>
         <clipPath id="clip0_2019_996">

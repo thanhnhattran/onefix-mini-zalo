@@ -33,7 +33,7 @@ export default function ChatIcon({ active, ...props }: CartIconProps) {
           y2="29.6963"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="var(--highlight)" />
+          <stop stopColor="var(--primary-gradient)" />
           <stop offset="1" stopColor="var(--primary)" />
         </linearGradient>
         <clipPath id="clip0_2019_7696">

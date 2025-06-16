@@ -1,9 +1,8 @@
 import { useAtomValue } from "jotai";
 import { To, useLocation, useNavigate } from "react-router-dom";
-import { useMemo } from "react";
 import { useRouteHandle } from "@/hooks";
 import { BackIcon } from "./icons/back";
-import { servicesState, userState } from "@/state";
+import { customTitleState, userState } from "@/state";
 import { getConfig } from "@/utils/miscellaneous";
 import HeaderShieldIcon from "./icons/header-shield";
 
@@ -21,21 +20,15 @@ function ProfileHeader() {
   );
 }
 
+function CustomTitle() {
+  const title = useAtomValue(customTitleState);
+  return title;
+}
+
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [handle, match] = useRouteHandle();
-  const services = useAtomValue(servicesState);
-
-  const title = useMemo(() => {
-    if (handle) {
-      if (typeof handle.title === "function") {
-        return handle.title({ params: match.params, services: services });
-      } else {
-        return handle.title;
-      }
-    }
-  }, [handle]);
 
   const showBack = location.key !== "default" && handle?.back !== false;
 
@@ -74,7 +67,9 @@ export default function Header() {
                 <BackIcon />
               </div>
             )}
-            <div className="text-xl font-medium truncate">{title}</div>
+            <div className="text-xl font-medium truncate">
+              {handle.title === "custom" ? <CustomTitle /> : handle.title}
+            </div>
           </>
         )}
       </div>

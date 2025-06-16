@@ -1,14 +1,4 @@
-import {
-  Doctor,
-  Booking,
-  Service,
-  TimeSlot,
-  Invoice,
-  Department,
-  Article,
-  DepartmentGroup,
-  AvailableTimeSlots,
-} from "@/types";
+import { Department, AvailableTimeSlots } from "@/types";
 import TeddyNH from "@/static/doctors/teddynh.png";
 import DinhLD from "@/static/doctors/dinhld.png";
 import XungTD from "@/static/doctors/xungtd.png";
@@ -22,6 +12,7 @@ import exploreScientist from "@/static/explore/explore-scientist.png";
 import exploreRoom from "@/static/explore/explore-room.png";
 import exploreDishes from "@/static/explore/explore-dishes.png";
 import exploreOmega3 from "@/static/explore/explore-omega-3.png";
+import newsThumbnail from "@/static/news.png";
 
 export async function mockSymptoms() {
   return [
@@ -88,36 +79,36 @@ export async function mockDoctors() {
   return [
     {
       id: 1,
-      name: "Dương Nhất Vĩ",
+      name: "Nguyễn Nhất Vĩ",
       title: "Phó Trưởng Khoa",
-      languages: "Tiếng Trung, English",
+      languages: "Tiếng Việt, English",
       specialties: "Thần Kinh Nội Khoa, Chóng Mặt, Đau Đầu Chuyên Khoa",
       image: ViDN,
       isAvailable: Math.random() > 0.3,
     },
     {
       id: 2,
-      name: "Lý Đa Đình",
+      name: "Lê Đa Đình",
       title: "Trưởng Khoa",
-      languages: "Tiếng Trung, English, 한국어",
+      languages: "Tiếng Việt, English, 한국어",
       specialties: "Nội Khoa, Bệnh Gan",
       image: DinhLD,
       isAvailable: Math.random() > 0.3,
     },
     {
       id: 3,
-      name: "Trương Đình Xưng",
+      name: "Hoàng Đình Xưng",
       title: "Trưởng Khoa",
-      languages: "Tiếng Trung, English",
+      languages: "Tiếng Việt, English",
       specialties: "Nội Khoa, Bệnh Gan",
       image: XungTD,
       isAvailable: Math.random() > 0.3,
     },
     {
       id: 4,
-      name: "Hồng Tự Trấn",
+      name: "Lê Thảo Nhi",
       title: "Trưởng Khoa",
-      languages: "Tiếng Trung, English, 한국어",
+      languages: "Tiếng Việt, English, 한국어",
       specialties: "Nội Khoa, Bệnh Gan",
       image: TranHT,
       isAvailable: Math.random() > 0.3,
@@ -126,7 +117,7 @@ export async function mockDoctors() {
       id: 5,
       name: "John Wilson",
       title: "MD",
-      languages: "Tiếng Trung, English",
+      languages: "Tiếng Việt, English",
       specialties: "Nội Khoa, Bệnh Gan",
       image: WilsonJ,
       isAvailable: Math.random() > 0.3,
@@ -135,7 +126,7 @@ export async function mockDoctors() {
       id: 6,
       name: "Tom Hiddleston",
       title: "MD",
-      languages: "Tiếng Trung, English, 한국어",
+      languages: "Tiếng Việt, English, 한국어",
       specialties: "Nội Khoa, Bệnh Gan",
       image: HiddlestonT,
       isAvailable: Math.random() > 0.3,
@@ -144,7 +135,7 @@ export async function mockDoctors() {
       id: 7,
       name: "TeddyNH",
       title: "Trưởng Khoa",
-      languages: "Tiếng Trung, English, 한국어",
+      languages: "Tiếng Việt, English, 한국어",
       specialties: "Nội Khoa, Bệnh Gan",
       image: TeddyNH,
       isAvailable: Math.random() > 0.3,
@@ -154,14 +145,12 @@ export async function mockDoctors() {
 
 export async function mockServices() {
   const [d1, d2] = await mockDepartments();
-  const genDesc = (imageUrl) =>
-    `<div class="font-roboto flex w-full flex-col gap-4 px-4 pt-4 text-sm "><div class="flex items-start text-base font-medium"><p>Khoa nội khoa tổng quát đã được chứng nhận chất lượng bởi tổ chức gia đình bác sĩ thế giới WONCA</p></div><div class="flex items-start"><p>Bệnh nội khoa, tổng quát bao gồm rất nhiều bệnh lý thuộc các chuyên ngành y khác nhau, chủ yếu được điều trị bằng thuốc kết hợp các thủ thuật nhỏ (nếu có) và thay đổi lối sống, chế độ dinh dưỡng, nghỉ ngơi, vận động khoa học.</p></div><img class="rounded-lg" src="${imageUrl}" /><div class="h-56"><span><p class="mb-1.5">Khám nội tổng quát (hay khám nội khoa) hay khám sức khỏe nội tổng quát là cách hiệu quả để mỗi người chủ động phát hiện bệnh kịp thời và điều trị bệnh từ sớm. Quy trình thăm khám nội tổng quát thường bao gồm:</p><div class="mb-1.5 h-5"></div><p class="mb-1.5">Kiểm tra cơ bản: Bao gồm việc kiểm tra cân nặng, chiều cao, đo huyết áp… Các thông số này có thể cung cấp những thông tin quan trọng về tình trạng sức khỏe cơ bản của cơ thể.</p><p class="mb-1.5">Khám lâm sàng (nội hô hấp, tiêu hóa, nội tiết, thần kinh, cơ xương khớp, tai mũi họng, răng hàm mặt…): Thông qua việc khám lâm sàng, bác sĩ có thể đánh giá ban đầu tình trạng sức khỏe, bệnh lý của người bệnh..</p><p class="mb-1.5">Xét nghiệm, chụp chiếu: Sau khám lâm sàng, bác sĩ có thể chỉ định người bệnh thực hiện các cận lâm sàng chuyên sâu như xét nghiệm máu, xét nghiệm nước tiểu, siêu âm bụng, siêu âm tim, siêu âm tổng quát, chụp X-quang, chụp CT, chụp MRI, siêu âm… để tầm soát, đánh giá, phát hiện các bệnh lý liên quan, kể cả ung thư.</p><p>Lưu ý, quy trình ở trên chỉ mang tính tham khảo. Tùy mỗi bệnh lý hay tùy tại mỗi cơ sở y tế, danh mục khám nội tổng quát, quy trình sẽ được xây dựng khác nhau và còn thay đổi.</p></span></div></div>`;
 
   return [
     {
       id: 1,
       name: "Điều trị giảm cân",
-      description: genDesc(exploreDishes),
+      description: mockDescription(exploreDishes),
       image: exploreDishes,
       price: 100000,
       department: d1,
@@ -169,7 +158,7 @@ export async function mockServices() {
     {
       id: 2,
       name: "Xoá cận",
-      description: genDesc(exploreKidHeight),
+      description: mockDescription(exploreKidHeight),
       image: exploreKidHeight,
       price: 100000,
       department: d2,
@@ -177,7 +166,7 @@ export async function mockServices() {
     {
       id: 3,
       name: "Trị nám",
-      description: genDesc(exploreOmega3),
+      description: mockDescription(exploreOmega3),
       image: exploreOmega3,
       price: 100000,
       department: d2,
@@ -269,6 +258,9 @@ export async function mockDepartmentGroups() {
   }));
 }
 
+export const mockDescription = (imageUrl) =>
+  `<div class="flex items-start text-base font-medium"><p>Khoa nội khoa tổng quát đã được chứng nhận chất lượng bởi tổ chức gia đình bác sĩ thế giới WONCA</p></div><div class="flex items-start"><p>Bệnh nội khoa, tổng quát bao gồm rất nhiều bệnh lý thuộc các chuyên ngành y khác nhau, chủ yếu được điều trị bằng thuốc kết hợp các thủ thuật nhỏ (nếu có) và thay đổi lối sống, chế độ dinh dưỡng, nghỉ ngơi, vận động khoa học.</p></div><img class="rounded-lg" src="${imageUrl}" /><div class="h-56"><span><p class="mb-1.5">Khám nội tổng quát (hay khám nội khoa) hay khám sức khỏe nội tổng quát là cách hiệu quả để mỗi người chủ động phát hiện bệnh kịp thời và điều trị bệnh từ sớm. Quy trình thăm khám nội tổng quát thường bao gồm:</p><div class="mb-1.5 h-5"></div><p class="mb-1.5">Kiểm tra cơ bản: Bao gồm việc kiểm tra cân nặng, chiều cao, đo huyết áp… Các thông số này có thể cung cấp những thông tin quan trọng về tình trạng sức khỏe cơ bản của cơ thể.</p><p class="mb-1.5">Khám lâm sàng (nội hô hấp, tiêu hóa, nội tiết, thần kinh, cơ xương khớp, tai mũi họng, răng hàm mặt…): Thông qua việc khám lâm sàng, bác sĩ có thể đánh giá ban đầu tình trạng sức khỏe, bệnh lý của người bệnh..</p><p class="mb-1.5">Xét nghiệm, chụp chiếu: Sau khám lâm sàng, bác sĩ có thể chỉ định người bệnh thực hiện các cận lâm sàng chuyên sâu như xét nghiệm máu, xét nghiệm nước tiểu, siêu âm bụng, siêu âm tim, siêu âm tổng quát, chụp X-quang, chụp CT, chụp MRI, siêu âm… để tầm soát, đánh giá, phát hiện các bệnh lý liên quan, kể cả ung thư.</p><p>Lưu ý, quy trình ở trên chỉ mang tính tham khảo. Tùy mỗi bệnh lý hay tùy tại mỗi cơ sở y tế, danh mục khám nội tổng quát, quy trình sẽ được xây dựng khác nhau và còn thay đổi.</p></span></div>`;
+
 export async function mockDepartments() {
   const groups = await mockDepartmentGroups();
   let id = 0;
@@ -279,7 +271,8 @@ export async function mockDepartments() {
         ["A", "B", "C", "D", "E", "F", "G", "H"].map((letter) => ({
           id: ++id,
           name: `${group.name} ${letter}`,
-          description: group.description,
+          shortDescription: group.description,
+          description: mockDescription(newsThumbnail),
           groupId: group.id,
         }))
       ),

@@ -1,5 +1,5 @@
-import { MutableRefObject, useLayoutEffect, useState } from 'react';
-import { UIMatch, useMatches } from 'react-router-dom';
+import { MutableRefObject, useLayoutEffect, useState } from "react";
+import { UIMatch, useMatches } from "react-router-dom";
 
 export function useRealHeight(
   element: MutableRefObject<HTMLDivElement | null>,
@@ -7,7 +7,7 @@ export function useRealHeight(
 ) {
   const [height, setHeight] = useState(defaultValue ?? 0);
   useLayoutEffect(() => {
-    if (element.current && typeof ResizeObserver !== 'undefined') {
+    if (element.current && typeof ResizeObserver !== "undefined") {
       const ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
         const [{ contentRect }] = entries;
         setHeight(contentRect.height);
@@ -18,7 +18,7 @@ export function useRealHeight(
     return () => {};
   }, [element.current]);
 
-  if (typeof ResizeObserver === 'undefined') {
+  if (typeof ResizeObserver === "undefined") {
     return -1;
   }
   return height;
@@ -28,7 +28,7 @@ export function useRouteHandle() {
   const matches = useMatches() as UIMatch<
     undefined,
     {
-      title?: string | Function;
+      title?: string;
       back?: boolean;
       scrollRestoration?: number;
       noScroll?: boolean;

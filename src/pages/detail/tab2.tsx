@@ -1,23 +1,19 @@
 import DoctorSelector from "@/components/form/doctor-selector";
 import FabForm from "@/components/form/fab-form";
-import { bookingFormState, serviceByIdState } from "@/state";
+import { bookingFormState } from "@/state";
 import { Doctor } from "@/types";
-import { useAtomValue, useSetAtom } from "jotai";
-import { useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import NotFound from "../404";
+import { useSetAtom } from "jotai";
+import { useContext, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { DetailPageContext } from "./context";
 
 export default function Tab2() {
-  const { id } = useParams();
-  const service = useAtomValue(serviceByIdState(Number(id)));
+  const { tab2 } = useContext(DetailPageContext);
+
   const [selectedDoctor, setSelectedDoctor] = useState<Doctor>();
   const [query] = useSearchParams();
   const navigate = useNavigate();
   const setBookingData = useSetAtom(bookingFormState);
-
-  if (!service) {
-    return <NotFound />;
-  }
 
   return (
     <FabForm
@@ -26,7 +22,7 @@ export default function Tab2() {
         onClick: () => {
           setBookingData((prev) => ({
             ...prev,
-            department: service.department,
+            department: tab2.department,
             doctor: selectedDoctor,
           }));
           navigate("/booking", {

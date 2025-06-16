@@ -21,7 +21,11 @@ export function NewsItem() {
           <span>20/05/2025</span>
         </div>
       </div>
-      <img src={newsThumbnail} className="h-20 w-20" alt="News thumbnail" />
+      <img
+        src={newsThumbnail}
+        className="h-20 w-20 rounded-lg object-cover object-center"
+        alt="News thumbnail"
+      />
     </TransitionLink>
   );
 }

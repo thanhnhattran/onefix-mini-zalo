@@ -31,7 +31,7 @@ function CallIcon() {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="var(--primary)" />
-          <stop offset="1" stopColor="var(--highlight)" />
+          <stop offset="1" stopColor="var(--primary-gradient)" />
         </linearGradient>
         <clipPath id="clip0_11_202">
           <rect width="41" height="41" fill="white" />
