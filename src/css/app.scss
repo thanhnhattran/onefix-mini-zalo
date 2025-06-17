@@ -13,7 +13,7 @@
 
   --safe-top: var(--zaui-safe-area-inset-top, env(safe-area-inset-top, 30px));
   --safe-bottom: max(
-    16px,
+    8px,
     var(--zaui-safe-area-inset-bottom, env(safe-area-inset-bottom, 30px))
   );
 }

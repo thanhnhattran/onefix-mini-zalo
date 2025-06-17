@@ -155,17 +155,18 @@ There is a CTA block to chat with Zalo OA. To change the Zalo OA for chat, modif
 
 ### Customization
 
-This template can be customized by changing 4 main colors in `src/css/app.scss`:
+This template can be customized by changing 5 main colors in `src/css/app.scss`:
 
 ```css
 :root {
-  --primary: #00b8be;
-  --highlight: #67d5d9b0;
+  --primary: #00abbb;
+  --primary-gradient: #00bead;
+  --highlight: #01bdaf1a;
   --background: #f2f9f9;
   --disabled: #9a9a9a;
-}
 ```
 
-| Example 1                              | Example 2                                |
-| -------------------------------------- | ---------------------------------------- |
-| ![Red](./docs/primary-color-blue.webp) | ![Green](./docs/primary-color-teal.webp) |
+| `--primary: #31992c`                      | `--primary: #992c2c`                          |
+| ----------------------------------------- | --------------------------------------------- |
+| ![Red](./docs/customise-red.webp)         | ![Green](./docs/customise-green.webp)         |
+| ![Red](./docs/customise-red-booking.webp) | ![Green](./docs/customise-green-booking.webp) |

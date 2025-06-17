@@ -45,15 +45,15 @@ export default function Footer() {
   }
 
   return (
-    <div className="w-full relative bg-white">
+    <div className="w-full relative">
       <FooterWave
-        className="absolute inset-x-0 bottom-sb z-10 h-24 -mb-4"
+        className="absolute inset-x-0 bottom-sb z-10 h-24 -mb-6"
         style={{
           filter: "drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.08))",
         }}
       />
       <div
-        className="w-full px-4 pt-2 grid text-3xs relative z-20 justify-center pb-sb"
+        className="w-full px-4 pt-2 grid text-3xs relative z-20 justify-center pb-sb bg-white"
         style={{
           gridTemplateColumns: `repeat(${NAV_ITEMS.length}, 1fr)`,
         }}
@@ -63,7 +63,7 @@ export default function Footer() {
             <TransitionLink
               to={item.path}
               key={item.path}
-              className="flex flex-col items-center space-y-0.5 p-1 pb-2.5 active:scale-105"
+              className="flex flex-col items-center space-y-0.5 p-1 active:scale-105"
             >
               {({ isActive }) =>
                 item.name ? (
