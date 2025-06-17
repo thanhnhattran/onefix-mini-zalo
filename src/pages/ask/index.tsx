@@ -44,6 +44,8 @@ export default function AskPage() {
         render={({ symptom, description }) => (
           <>
             <DepartmentPicker
+              label="Gửi đến khoa"
+              placeholder="Chưa rõ"
               value={formData.department}
               onChange={(department) =>
                 setFormData((prev) => ({ ...prev, department }))

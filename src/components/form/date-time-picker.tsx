@@ -58,13 +58,10 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
               type="button"
               key={index}
               onClick={() => handleDateSelect(date)}
-              className={`flex flex-none basis-16 flex-col justify-center items-center gap-2 px-1 py-2.5 font-medium relative ${
-                isSelected ? "text-primary" : ""
+              className={`flex flex-none basis-16 flex-col justify-center items-center gap-2 px-1 py-2.5 font-medium relative rounded-lg ${
+                isSelected ? "text-primary-gradient bg-highlight" : ""
               }`}
             >
-              {isSelected && (
-                <div className="bg-primary opacity-10 absolute inset-0 rounded-lg" />
-              )}
               <span className="text-center text-xs whitespace-nowrap opacity-50">
                 {dayName}
               </span>
@@ -91,8 +88,8 @@ function DateTimePicker({ value, onChange, slots }: DateTimePickerProps) {
               key={timeIndex}
               onClick={() => handleTimeSelect(time)}
               disabled={!time.isAvailable}
-              className={`flex items-center justify-center rounded-3xl p-2 text-center ${
-                isSelected ? "bg-primary text-white" : "bg-background"
+              className={`flex items-center justify-center rounded-3xl h-8 text-center text-sm ${
+                isSelected ? "bg-primary-gradient text-white" : "bg-background"
               } ${!time.isAvailable ? "opacity-25 cursor-not-allowed" : ""}`}
             >
               {formattedTime}

@@ -28,13 +28,7 @@ function FabForm({ fab, children, onSubmit }: FabFormProps) {
       <div className="flex-1">{children}</div>
       <div className="flex-none flex p-4 pb-sb space-x-3 sticky bottom-0">
         {(Array.isArray(fab) ? fab : [fab]).map((fab, i) => (
-          <Button
-            key={i}
-            appearAnimation
-            type="submit"
-            loading={isLoading}
-            {...fab}
-          />
+          <Button key={i} type="submit" loading={isLoading} {...fab} />
         ))}
       </div>
     </form>

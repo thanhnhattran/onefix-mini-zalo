@@ -13,7 +13,7 @@ export function VisitedDoctor({ doctor }: VisitedDoctorProps) {
 
   return (
     <button
-      className="flex items-center gap-2 rounded-lg bg-background px-3 py-2 text-left"
+      className="flex items-center gap-2 rounded-lg bg-[#F6F8FC] px-3 py-2 text-left"
       onClick={() => {
         setFormData((prev) => ({
           ...prev,
@@ -27,7 +27,7 @@ export function VisitedDoctor({ doctor }: VisitedDoctorProps) {
       <img src={doctor.image} className="w-10 h-10 rounded-full object-cover" />
       <div className="flex flex-grow flex-col gap-2">
         <div className="text-sm font-medium">{doctor.name}</div>
-        <div className="flex items-start text-disabled">
+        <div className="flex items-start text-disabled text-2xs">
           {doctor.specialties}
         </div>
       </div>

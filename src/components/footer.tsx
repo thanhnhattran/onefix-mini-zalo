@@ -46,7 +46,12 @@ export default function Footer() {
 
   return (
     <div className="w-full relative bg-white">
-      <FooterWave className="absolute inset-x-0 bottom-sb z-10 h-24 -mb-4" />
+      <FooterWave
+        className="absolute inset-x-0 bottom-sb z-10 h-24 -mb-4"
+        style={{
+          filter: "drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.08))",
+        }}
+      />
       <div
         className="w-full px-4 pt-2 grid text-3xs relative z-20 justify-center pb-sb"
         style={{

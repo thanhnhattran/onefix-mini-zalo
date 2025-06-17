@@ -42,7 +42,7 @@ function DoctorSelector({
             suffix={
               <button
                 disabled={!doctor.isAvailable}
-                className={`flex items-center justify-center rounded-full flex-none basis-14 h-7 border border-primary disabled:bg-highlight disabled:grayscale disabled:text-disabled disabled:border-none ${selected ? "bg-primary" : "text-primary"}`}
+                className={`flex items-center justify-center rounded-full flex-none basis-14 h-7 border border-primary-gradient disabled:bg-highlight disabled:grayscale disabled:text-disabled disabled:border-none ${selected ? "bg-primary-gradient" : "text-primary-gradient"}`}
               >
                 {selected ? (
                   <CheckIcon className="h-4 w-4" />

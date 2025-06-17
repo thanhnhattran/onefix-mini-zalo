@@ -30,12 +30,15 @@ export default function Header() {
   const location = useLocation();
   const [handle, match] = useRouteHandle();
 
+  const showMainHeader = !handle?.back;
   const showBack = location.key !== "default" && handle?.back !== false;
 
   return (
-    <header className="flex-none w-full bg-white min-h-12 pr-[90px] px-4 pt-st pb-2 space-x-2 bg-no-repeat bg-right-top">
+    <header
+      className={`flex-none w-full min-h-12 pr-[90px] px-4 pt-st pb-2 space-x-2 ${showMainHeader ? "" : "bg-white"}`}
+    >
       <div className="flex items-center min-h-12">
-        {!handle?.back ? (
+        {showMainHeader ? (
           <>
             <div className="fixed inset-0 h-[230px] z-0 bg-gradient-to-br from-highlight from-[1.36%] to-background to-[61.49%]" />
             <HeaderShieldIcon className="fixed top-0 right-0" />

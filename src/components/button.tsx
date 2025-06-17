@@ -11,7 +11,6 @@ import React, {
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   loading?: boolean;
-  appearAnimation?: boolean;
   onDisabledClick?: () => void;
 }
 
@@ -20,26 +19,10 @@ export const Button: FC<ButtonProps> = ({
   className,
   loading,
   disabled,
-  appearAnimation,
   onDisabledClick,
+  onClick,
   ...props
 }) => {
-  const [isVisible, setIsVisible] = useState(!appearAnimation);
-
-  useEffect(() => {
-    if (appearAnimation) {
-      // Fallback for browsers that don't support View Transitions
-      if (!startViewTransition) {
-        setIsVisible(true);
-        return;
-      }
-
-      startViewTransition(() => {
-        setIsVisible(true);
-      });
-    }
-  }, [appearAnimation]);
-
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (disabled && onDisabledClick) {
       onDisabledClick();
@@ -50,24 +33,18 @@ export const Button: FC<ButtonProps> = ({
       e.preventDefault();
       return;
     }
-    props.onClick?.(e);
+    onClick?.(e);
   };
 
   return (
     <button
-      className={`
-        bg-gradient-to-br from-primary to-primary-gradient
-        ${loading || disabled ? "grayscale cursor-not-allowed" : "shadow shadow-highlight"}
-        ${className || ""}
-        ${
-          isVisible
-            ? `flex w-full h-12 p-3 justify-center items-center text-white text-lg rounded-full active:scale-95`
-            : "fixed bottom-0 left-1/2 w-full h-12 translate-y-40"
-        }
-      `}
-      {...props}
+      className={`relative overflow-hidden bg-gradient-to-br from-primary to-primary-gradient shadow shadow-highlight flex w-full h-12 p-3 justify-center items-center text-white text-lg rounded-full active:scale-95 ${className || ""}`}
       onClick={handleClick}
+      {...props}
     >
+      {(loading || disabled) && (
+        <div className="bg-[#E1E1E1CC] absolute inset-0 pointer-events-none" />
+      )}
       <div className="relative w-full h-full flex items-center justify-center">
         <div className={`${loading ? "opacity-0" : ""}`}>{children}</div>
         {loading && (

@@ -47,6 +47,8 @@ export default function Step1() {
       <div className="bg-white flex flex-col space-y-1">
         <div className="p-4">
           <DepartmentPicker
+            label="Khoa khám"
+            placeholder="Chọn khoa khám"
             value={formData?.department}
             onChange={(department) =>
               setFormData((prev) => ({

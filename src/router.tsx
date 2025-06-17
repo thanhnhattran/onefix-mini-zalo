@@ -103,10 +103,6 @@ const router = createBrowserRouter(
         {
           path: "/schedule",
           element: <ScheduleHistoryPage />,
-          handle: {
-            back: true,
-            title: "Lịch khám",
-          },
         },
         {
           path: "/schedule/:id",

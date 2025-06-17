@@ -2,20 +2,25 @@ import { departmentHierarchyState, departmentsState } from "@/state";
 import { Department } from "@/types";
 import { useAtomValue } from "jotai";
 import { Select } from "zmp-ui";
+import { SelectProps } from "zmp-ui/select";
 
 const { Option, OtpGroup } = Select;
 
-interface DepartmentPickerProps {
+interface DepartmentPickerProps
+  extends Omit<SelectProps, "value" | "onChange"> {
   value?: Department;
   onChange?: (value: Department) => void;
 }
 
-function DepartmentPicker({ value, onChange }: DepartmentPickerProps) {
+function DepartmentPicker({
+  value,
+  onChange,
+  ...props
+}: DepartmentPickerProps) {
   const data = useAtomValue(departmentHierarchyState);
 
   return (
     <Select
-      label="Khoa khám"
       closeOnSelect
       value={value?.id}
       onChange={(value) => {
@@ -29,6 +34,7 @@ function DepartmentPicker({ value, onChange }: DepartmentPickerProps) {
           onChange?.(dep);
         }
       }}
+      {...props}
     >
       {data.map((group) => (
         <OtpGroup key={group.name} label={group.name}>

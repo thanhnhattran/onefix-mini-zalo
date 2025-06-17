@@ -27,6 +27,7 @@ function SymptomInquiry<T>({
   const symptom = (
     <FormItem label="Triệu chứng">
       <Select
+        placeholder="Chọn triệu chứng"
         multiple
         value={value.symptoms}
         onChange={(symptoms) => onChange((prev) => ({ ...prev, symptoms }))}

@@ -33,8 +33,8 @@ export default function DoctorItem({
           {withLanguages && (
             <div className="text-disabled">{doctor.languages}</div>
           )}
-          <div className="flex items-center text-disabled pt-1.5">
-            <p>{description ?? doctor.specialties}</p>
+          <div className="flex items-center text-2xs text-disabled pt-1.5">
+            {description ?? doctor.specialties}
           </div>
         </div>
       </div>

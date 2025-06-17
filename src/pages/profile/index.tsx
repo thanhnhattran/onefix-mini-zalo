@@ -1,5 +1,5 @@
 import ArrowRightIcon from "@/components/icons/arrow-right";
-import { doctorsState, userState } from "@/state";
+import { doctorsState } from "@/state";
 import { useAtomValue } from "jotai";
 import prescription from "@/static/services/prescription.svg";
 import calendar from "@/static/services/calendar.svg";
@@ -10,7 +10,6 @@ import { Action } from "./action";
 import { VisitedDoctor } from "./visited-doctor";
 
 function ProfilePage() {
-  const { userInfo } = useAtomValue(userState);
   const [d1, d2] = useAtomValue(doctorsState);
 
   return (
@@ -22,14 +21,16 @@ function ProfilePage() {
           ["Buổi khám", 3],
         ].map(([key, value]) => (
           <div key={key} className="flex flex-col space-y-1.5 text-center">
-            <div className="text-xl font-bold text-primary">{value}</div>
-            <div>{key}</div>
+            <div className="text-xl font-bold text-primary-gradient">
+              {value}
+            </div>
+            <div className="text-disabled text-2xs">{key}</div>
           </div>
         ))}
       </div>
-      <div className="flex-1 flex flex-col rounded-t-3xl bg-white py-8 space-y-9 overflow-y-auto">
+      <div className="flex-1 flex flex-col bg-white py-8 space-y-9 overflow-y-auto">
         <Section title="Dịch vụ y tế" viewMore="/services">
-          <div className="grid grid-cols-4 px-3 pt-6 text-center text-xs">
+          <div className="grid grid-cols-4 pt-6 gap-2 text-center text-xs">
             {[
               { icon: prescription, label: "Toa thuốc" },
               { icon: calendar, label: "Lịch hẹn" },
