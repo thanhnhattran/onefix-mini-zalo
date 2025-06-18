@@ -16,7 +16,7 @@ export function ScheduleItem({ schedule }: ScheduleItemProps) {
   return (
     <TransitionLink
       to={`/schedule/${schedule.id}`}
-      className="font-roboto flex w-full flex-col gap-3 rounded-xl bg-white p-4"
+      className="flex w-full flex-col gap-3 rounded-xl bg-white p-4"
     >
       <div className="flex items-center justify-between gap-11 font-medium">
         <div className="text-base">{schedule.department.name}</div>

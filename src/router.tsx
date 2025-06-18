@@ -16,6 +16,7 @@ import FeedbackPage from "./pages/feedback";
 import SearchResultPage from "./pages/search";
 import { ErrorBoundary } from "./components/error-boundary";
 import DepartmentDetailPage from "./pages/detail/department";
+import NewsPage from "./pages/news";
 
 const router = createBrowserRouter(
   [
@@ -117,6 +118,14 @@ const router = createBrowserRouter(
           element: <ProfilePage />,
           handle: {
             profile: true,
+          },
+        },
+        {
+          path: "/news/:id",
+          element: <NewsPage />,
+          handle: {
+            back: true,
+            title: "Tin tức",
           },
         },
         {

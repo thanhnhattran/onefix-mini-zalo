@@ -6,7 +6,7 @@ export default function Tab1() {
 
   return (
     <div
-      className="font-roboto flex w-full flex-col gap-4 px-4 pt-4 text-sm leading-[150%]"
+      className="flex w-full flex-col gap-4 px-4 pt-4 text-sm leading-[150%]"
       dangerouslySetInnerHTML={{ __html: tab1.htmlContent }}
     />
   );

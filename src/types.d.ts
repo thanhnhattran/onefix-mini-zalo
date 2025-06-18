@@ -82,7 +82,9 @@ export interface Department {
 interface Article {
   id: number;
   title: string;
+  description: string;
   category: string;
   timeAgo: string;
   image: string;
+  content: string;
 }

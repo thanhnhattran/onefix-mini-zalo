@@ -88,6 +88,13 @@ export const scheduleByIdState = atomFamily((id: number) =>
   })
 );
 
+export const newsByIdState = atomFamily((id: number) =>
+  atom(async (get) => {
+    const articles = await get(articlesState);
+    return articles.find((news) => news.id === id);
+  })
+);
+
 /**
  * Heavily computed values
  */

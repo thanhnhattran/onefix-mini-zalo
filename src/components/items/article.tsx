@@ -1,13 +1,13 @@
 import { Article } from "@/types";
 import TransitionLink from "../transition-link";
 
-export function ArticleItem({ title, category, timeAgo, image }: Article) {
+export function ArticleItem({ id, title, category, timeAgo, image }: Article) {
   return (
     <TransitionLink
-      to="/booking"
+      to={`/news/${id}`}
       className="flex flex-grow items-center justify-center space-x-6"
     >
-      <div className="font-roboto flex flex-grow flex-col items-start gap-3">
+      <div className="flex flex-grow flex-col items-start gap-3">
         <div className="h-9 line-clamp-2 text-sm font-medium">{title}</div>
         <div className="w-full flex items-center justify-between text-xs">
           <div className="rounded-lg bg-highlight px-2 text-center whitespace-nowrap">

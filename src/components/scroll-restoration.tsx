@@ -5,7 +5,10 @@ import { useLocation } from "react-router-dom";
 const scrollPositions = {};
 
 function findElementWithScrollbar(rootElement: Element = document.body) {
-  if (rootElement.scrollHeight > rootElement.clientHeight) {
+  if (
+    rootElement.scrollHeight > rootElement.clientHeight &&
+    rootElement.computedStyleMap().get("overflow")?.toString() !== "hidden"
+  ) {
     // If the element has a scrollbar, return it
     return rootElement;
   }

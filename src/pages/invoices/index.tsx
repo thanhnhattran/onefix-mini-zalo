@@ -11,7 +11,10 @@ function InvoicesPage() {
   return (
     <div className="py-5 px-4 space-y-4">
       {invoices.map((invoice) => (
-        <div className="w-full space-y-6 rounded-2xl bg-white px-4 py-6">
+        <div
+          key={invoice.id}
+          className="w-full space-y-6 rounded-2xl bg-white px-4 py-6"
+        >
           <div className="text-xl font-medium">
             {invoice.booking.department.name}
           </div>
