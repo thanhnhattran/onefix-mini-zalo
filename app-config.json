@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "ZaUI Doctor",
+    "title": "ONEFIX",
     "textColor": "black",
     "statusBar": "transparent",
     "actionBarHidden": true,
@@ -12,6 +12,6 @@
   "listAsyncJS": [],
   "template": {
     "name": "zaui-doctor",
-    "oaID": "4318657068771012646"
+    "oaID": "2153401651965200898"
   }
 }
