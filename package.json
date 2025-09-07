@@ -15,10 +15,13 @@
     "Samsung >= 5"
   ],
   "scripts": {
-    "login": "zmp login",
-    "start": "zmp start",
-    "deploy": "zmp deploy",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\" | cat"
+  "login": "zmp login",
+  "start": "zmp start",
+  "deploy": "zmp deploy",
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "jotai": "^2.12.1",
