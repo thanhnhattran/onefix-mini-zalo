@@ -90,7 +90,7 @@ const router = createBrowserRouter(
           element: <AskPage />,
           handle: {
             back: true,
-            title: "Gửi câu hỏi",
+            title: "Sửa Gấp",
           },
         },
         {

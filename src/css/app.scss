@@ -1,9 +1,9 @@
 :root {
-  --primary: #00abbb;
-  --primary-gradient: #00bead;
-  --highlight: #01bdaf1a;
-  --background: #f2f9f9;
-  --disabled: #9a9a9a;
+  --primary: #f97316;            /* Cam 1FIX */
+  --primary-gradient: #fb923c;   /* Gradient cam nhạt */
+  --highlight: #fff7ed;          /* Màu highlight nhẹ (cam pastel) */
+  --background: #f9fafb;         /* Nền app (xám rất nhạt) */
+  --disabled: #9ca3af;           /* Xám cho trạng thái disabled */
 
   --zaui-light-body-background-color: var(--background);
   --zaui-light-input-border-color: rgba(0, 0, 0, 0.1);
